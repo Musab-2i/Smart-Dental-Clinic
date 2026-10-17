@@ -12,7 +12,7 @@ namespace SmartDentalClinic.Data
     {
         private static void LocalLogError(string FuncName, string ErrorMessage)
         {
-            clsDataAccessSettings.LogError($"Error in {FuncName}: {ErrorMessage}", "clsCountriesData");
+            clsDataAccessSettings.ErrorFormating(FuncName, ErrorMessage, "clsCountriesData");
         }
 
         public static bool GetCountryInfoByID(int CountryID, ref string CountryName)

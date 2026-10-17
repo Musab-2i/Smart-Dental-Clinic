@@ -42,7 +42,7 @@ namespace SmartDentalClinic.Data
                     try
                     {
                         await connection.OpenAsync();
-                        await command.ExecuteScalarAsync();
+                        await command.ExecuteNonQueryAsync();
                         UserID = (int)outputIDparam.Value;
                     }
                     catch (Exception ex)
