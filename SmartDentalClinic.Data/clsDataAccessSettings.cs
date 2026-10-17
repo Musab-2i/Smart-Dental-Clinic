@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 
 namespace SmartDentalClinic.Data
@@ -9,9 +10,16 @@ namespace SmartDentalClinic.Data
     {
         public static string ConnectionString = ConfigurationManager.ConnectionStrings["SmartDentalClinic_Connection"].ConnectionString;
 
-        public static void LogError(string ErrorMessage, string sourceName)
+        public static  void ErrorFormating(string FuncName, string ErrorMessage, string sourceName)
         {
-            sourceName = "SmartDentalClinic";
+            LogError(
+                    $"Error in DB: {sourceName}\n" +
+                    $"Inside Function: {FuncName}\n" +
+                    $"Error Message: {ErrorMessage}");
+        }
+        public static void LogError(string ErrorMessage)
+        {
+            string sourceName = "SmartDentalClinic";
             try
             {
                 if (!EventLog.SourceExists(sourceName))

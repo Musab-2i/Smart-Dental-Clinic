@@ -77,9 +77,9 @@ namespace SmartDentalClinic.Business
             get { return $"{FirstName} {SecondName} {ThirdName} {LastName}"; }
         }
 
-        private bool _AddNewPerson()
+        private async Task<bool> _AddNewPersonAsync()
         {
-            this.PersonID = clsPeopleData.AddNewPerson(
+            this.PersonID = await clsPeopleData.AddNewPersonAsync(
                 this.NationalCountryID,
                 this.NationalID,
                 this.FirstName,
@@ -95,9 +95,9 @@ namespace SmartDentalClinic.Business
             );
             return (this.PersonID != -1);
         }
-        private bool _UpdatePerson()
+        private async Task<bool> _UpdatePersonAsync()
         {
-            return clsPeopleData.UpdatePerson(
+            return await clsPeopleData.UpdatePersonAsync(
                 this.PersonID,
                 this.NationalCountryID,
                 this.NationalID,
@@ -114,12 +114,12 @@ namespace SmartDentalClinic.Business
                 );
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
             switch (Mode)
             {
                 case enMode.AddNewPerson:
-                    if (_AddNewPerson())
+                    if (await _AddNewPersonAsync())
                     {
                         Mode = enMode.UpdatePerson;
                         return true;
@@ -129,7 +129,7 @@ namespace SmartDentalClinic.Business
                         return false;
                     }
                 case enMode.UpdatePerson:
-                    return _UpdatePerson();
+                    return await _UpdatePersonAsync();
             }
             return false;
         }
@@ -177,13 +177,17 @@ namespace SmartDentalClinic.Business
             }
         }
 
-        static public bool CheckPersonExistByPersonID(int PersonID)
+        static public async Task <bool> CheckPersonExistByPersonID(int PersonID)
         {
-            return clsPeopleData.CheckPersonExistByPersonID(PersonID);
+            return await clsPeopleData.CheckPersonExistByPersonIDAsync(PersonID);
         }
-        static public bool CheckPersonExistByNationalID(string NationalID)
+        static public async Task<bool> CheckPersonExistByNationalID(string NationalID)
         {
-            return clsPeopleData.CheckPersonExistByNationalID(NationalID);
+            return await clsPeopleData.CheckPersonExistByNationalIDAsync(NationalID);
+        }
+        static public async Task<bool> DeletePerson(int PersonID)
+        {
+            return await clsPeopleData.DeletePersonAsync(PersonID);
         }
 
     }

@@ -208,7 +208,7 @@ namespace SmartDentalClinic.Admin.People
             return true;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())
             {
@@ -226,7 +226,7 @@ namespace SmartDentalClinic.Admin.People
 
             _FillPersonInfoInPersonRecord();
 
-            if (_Person.Save())
+            if (await _Person.SaveAsync())
             {
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

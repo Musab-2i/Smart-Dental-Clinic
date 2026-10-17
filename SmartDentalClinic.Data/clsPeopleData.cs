@@ -12,9 +12,9 @@ namespace SmartDentalClinic.Data
     {
         private static void LocalLogError(string FuncName, string ErrorMessage)
         {
-            clsDataAccessSettings.LogError($"Error in {FuncName}: {ErrorMessage}", "clsPersonData");
+            clsDataAccessSettings.ErrorFormating(FuncName, ErrorMessage, "clsPersonData");
         }
-        public static int AddNewPerson(int NationalCountryID, string NationalID,
+        public static async Task<int> AddNewPersonAsync(int NationalCountryID, string NationalID,
                                string FirstName, string SecondName, string ThirdName,
                                string LastName, string Address, string PhoneNo,
                                string Email, string ImagePath, DateTime DateOfBirth,
@@ -47,22 +47,23 @@ namespace SmartDentalClinic.Data
                         Direction = ParameterDirection.Output
                     };
                     command.Parameters.Add(outputIdParam);
+
                     try
                     {
-                        connection.Open();
-                        command.ExecuteNonQuery();
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
                         PersonID = (int)outputIdParam.Value;
                     }
                     catch (Exception ex)
                     {
-                        LocalLogError(nameof(AddNewPerson), ex.Message);
+                        LocalLogError(nameof(AddNewPersonAsync), ex.Message);
                     }
                 }
             }
             return PersonID;
         }
 
-        public static bool UpdatePerson(int PersonID, int NationalCountryID,
+        public static async Task<bool> UpdatePersonAsync(int PersonID, int NationalCountryID,
                                string NationalID, string FirstName, string SecondName, string ThirdName,
                                string LastName, string Address, string PhoneNo,
                                string Email, string ImagePath, DateTime DateOfBirth,
@@ -94,12 +95,12 @@ namespace SmartDentalClinic.Data
 
                     try
                     {
-                        connection.Open();
-                        RowsAffected = command.ExecuteNonQuery();
+                        await connection.OpenAsync();
+                        RowsAffected = await command.ExecuteNonQueryAsync();
                     }
                     catch (Exception ex)
                     {
-                        LocalLogError(nameof(UpdatePerson), ex.Message);
+                        LocalLogError(nameof(UpdatePersonAsync), ex.Message);
                     }
                 }
             }
@@ -204,7 +205,7 @@ namespace SmartDentalClinic.Data
 
         }
 
-        public static bool DeletePerson(int PersonID)
+        public static async Task<bool> DeletePersonAsync(int PersonID)
         {
             int RowsAffected = 0;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
@@ -215,19 +216,19 @@ namespace SmartDentalClinic.Data
                     command.Parameters.AddWithValue("@PersonID", PersonID);
                     try
                     {
-                        connection.Open();
-                        RowsAffected = command.ExecuteNonQuery();
+                        await connection.OpenAsync();
+                        RowsAffected = await command.ExecuteNonQueryAsync();
                     }
                     catch (Exception ex)
                     {
-                        LocalLogError(nameof(DeletePerson), ex.Message);
+                        LocalLogError(nameof(DeletePersonAsync), ex.Message);
                     }
                 }
             }
             return (RowsAffected > 0);
         }
 
-        public static bool CheckPersonExistByPersonID(int PersonID)
+        public static async Task<bool> CheckPersonExistByPersonIDAsync(int PersonID)
         {
             bool IsFound = false;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
@@ -246,20 +247,20 @@ namespace SmartDentalClinic.Data
 
                     try
                     {
-                        connection.Open();
-                        command.ExecuteNonQuery();
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
                         IsFound = (int)returnParameter.Value == 1;
                     }
                     catch (Exception ex)
                     {
-                        LocalLogError(nameof(CheckPersonExistByPersonID), ex.Message);
+                        LocalLogError(nameof(CheckPersonExistByPersonIDAsync), ex.Message);
                     }
                 }
             }
             return IsFound;
         }
 
-        public static bool CheckPersonExistByNationalID(string NationalID)
+        public static async Task<bool> CheckPersonExistByNationalIDAsync(string NationalID)
         {
             bool IsFound = false;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
@@ -277,13 +278,13 @@ namespace SmartDentalClinic.Data
                     command.Parameters.Add(returnParameter);
                     try
                     {
-                        connection.Open();
-                        command.ExecuteNonQuery();
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
                         IsFound = (int)returnParameter.Value == 1;
                     }
                     catch (Exception ex)
                     {
-                        LocalLogError(nameof(CheckPersonExistByNationalID), ex.Message);
+                        LocalLogError(nameof(CheckPersonExistByNationalIDAsync), ex.Message);
                     }
                 }
             }
