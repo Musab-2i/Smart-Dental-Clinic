@@ -29,40 +29,40 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblCountry = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblDateOfBirth = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.lblNationalID = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblPersonID = new System.Windows.Forms.Label();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lblCountry);
+            this.groupBox1.Controls.Add(this.lblPhone);
+            this.groupBox1.Controls.Add(this.lblDateOfBirth);
+            this.groupBox1.Controls.Add(this.lblAddress);
+            this.groupBox1.Controls.Add(this.lblEmail);
+            this.groupBox1.Controls.Add(this.lblGender);
+            this.groupBox1.Controls.Add(this.lblNationalID);
+            this.groupBox1.Controls.Add(this.lblName);
+            this.groupBox1.Controls.Add(this.lblPersonID);
             this.groupBox1.Controls.Add(this.pbPersonImage);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label10);
@@ -81,68 +81,115 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Person Card";
             // 
-            // label1
+            // lblCountry
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label1.ForeColor = System.Drawing.Color.Teal;
-            this.label1.Location = new System.Drawing.Point(147, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name: ";
+            this.lblCountry.AutoSize = true;
+            this.lblCountry.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblCountry.ForeColor = System.Drawing.Color.Black;
+            this.lblCountry.Location = new System.Drawing.Point(107, 437);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(45, 15);
+            this.lblCountry.TabIndex = 83;
+            this.lblCountry.Text = "[????]";
             // 
-            // label2
+            // lblPhone
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(30, 164);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Person ID :";
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblPhone.ForeColor = System.Drawing.Color.Black;
+            this.lblPhone.Location = new System.Drawing.Point(107, 398);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(45, 15);
+            this.lblPhone.TabIndex = 82;
+            this.lblPhone.Text = "[????]";
             // 
-            // label3
+            // lblDateOfBirth
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(21, 203);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "National ID :";
+            this.lblDateOfBirth.AutoSize = true;
+            this.lblDateOfBirth.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblDateOfBirth.ForeColor = System.Drawing.Color.Black;
+            this.lblDateOfBirth.Location = new System.Drawing.Point(107, 359);
+            this.lblDateOfBirth.Name = "lblDateOfBirth";
+            this.lblDateOfBirth.Size = new System.Drawing.Size(45, 15);
+            this.lblDateOfBirth.TabIndex = 81;
+            this.lblDateOfBirth.Text = "[????]";
             // 
-            // label13
+            // lblAddress
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(40, 320);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(67, 15);
-            this.label13.TabIndex = 66;
-            this.label13.Text = "Address :";
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblAddress.ForeColor = System.Drawing.Color.Black;
+            this.lblAddress.Location = new System.Drawing.Point(107, 320);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(45, 15);
+            this.lblAddress.TabIndex = 80;
+            this.lblAddress.Text = "[????]";
             // 
-            // label11
+            // lblEmail
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(56, 281);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 15);
-            this.label11.TabIndex = 64;
-            this.label11.Text = "Email :";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblEmail.ForeColor = System.Drawing.Color.Black;
+            this.lblEmail.Location = new System.Drawing.Point(107, 281);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(45, 15);
+            this.lblEmail.TabIndex = 79;
+            this.lblEmail.Text = "[????]";
             // 
-            // label9
+            // lblGender
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(45, 242);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 15);
-            this.label9.TabIndex = 62;
-            this.label9.Text = "Gender :";
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblGender.ForeColor = System.Drawing.Color.Black;
+            this.lblGender.Location = new System.Drawing.Point(107, 242);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(45, 15);
+            this.lblGender.TabIndex = 78;
+            this.lblGender.Text = "[????]";
+            // 
+            // lblNationalID
+            // 
+            this.lblNationalID.AutoSize = true;
+            this.lblNationalID.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblNationalID.ForeColor = System.Drawing.Color.Black;
+            this.lblNationalID.Location = new System.Drawing.Point(107, 203);
+            this.lblNationalID.Name = "lblNationalID";
+            this.lblNationalID.Size = new System.Drawing.Size(45, 15);
+            this.lblNationalID.TabIndex = 77;
+            this.lblNationalID.Text = "[????]";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblName.ForeColor = System.Drawing.Color.Teal;
+            this.lblName.Location = new System.Drawing.Point(193, 81);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(45, 15);
+            this.lblName.TabIndex = 76;
+            this.lblName.Text = "[????]";
+            // 
+            // lblPersonID
+            // 
+            this.lblPersonID.AutoSize = true;
+            this.lblPersonID.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblPersonID.ForeColor = System.Drawing.Color.Black;
+            this.lblPersonID.Location = new System.Drawing.Point(107, 164);
+            this.lblPersonID.Name = "lblPersonID";
+            this.lblPersonID.Size = new System.Drawing.Size(45, 15);
+            this.lblPersonID.TabIndex = 75;
+            this.lblPersonID.Text = "[????]";
+            // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbPersonImage.Image = global::SmartDentalClinic.Properties.Resources.Male_512;
+            this.pbPersonImage.Location = new System.Drawing.Point(6, 21);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(135, 134);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 74;
+            this.pbPersonImage.TabStop = false;
             // 
             // label12
             // 
@@ -174,115 +221,68 @@
             this.label8.TabIndex = 71;
             this.label8.Text = "Date Of Birth :";
             // 
-            // label4
+            // label13
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(107, 164);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 15);
-            this.label4.TabIndex = 75;
-            this.label4.Text = "[????]";
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(40, 320);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 15);
+            this.label13.TabIndex = 66;
+            this.label13.Text = "Address :";
             // 
-            // label5
+            // label11
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label5.ForeColor = System.Drawing.Color.Teal;
-            this.label5.Location = new System.Drawing.Point(193, 81);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 15);
-            this.label5.TabIndex = 76;
-            this.label5.Text = "[????]";
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(56, 281);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(51, 15);
+            this.label11.TabIndex = 64;
+            this.label11.Text = "Email :";
             // 
-            // label6
+            // label9
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(107, 203);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 15);
-            this.label6.TabIndex = 77;
-            this.label6.Text = "[????]";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(45, 242);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 15);
+            this.label9.TabIndex = 62;
+            this.label9.Text = "Gender :";
             // 
-            // label7
+            // label3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(107, 242);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 15);
-            this.label7.TabIndex = 78;
-            this.label7.Text = "[????]";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(21, 203);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 15);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "National ID :";
             // 
-            // label14
+            // label2
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(107, 281);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(45, 15);
-            this.label14.TabIndex = 79;
-            this.label14.Text = "[????]";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(30, 164);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 15);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Person ID :";
             // 
-            // label15
+            // label1
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(107, 320);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 15);
-            this.label15.TabIndex = 80;
-            this.label15.Text = "[????]";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(107, 359);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(45, 15);
-            this.label16.TabIndex = 81;
-            this.label16.Text = "[????]";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(107, 398);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(45, 15);
-            this.label17.TabIndex = 82;
-            this.label17.Text = "[????]";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(107, 437);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(45, 15);
-            this.label18.TabIndex = 83;
-            this.label18.Text = "[????]";
-            // 
-            // pbPersonImage
-            // 
-            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbPersonImage.Image = global::SmartDentalClinic.Properties.Resources.Male_512;
-            this.pbPersonImage.Location = new System.Drawing.Point(6, 21);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(135, 134);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 74;
-            this.pbPersonImage.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.label1.ForeColor = System.Drawing.Color.Teal;
+            this.label1.Location = new System.Drawing.Point(147, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Name: ";
             // 
             // ctrlPersonCard
             // 
@@ -310,15 +310,15 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblPersonID;
         private System.Windows.Forms.PictureBox pbPersonImage;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCountry;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.Label lblDateOfBirth;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblGender;
+        private System.Windows.Forms.Label lblNationalID;
     }
 }

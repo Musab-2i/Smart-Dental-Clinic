@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmartDentalClinic.Data
 {
-    internal class clsPeopleData
+    public class clsPeopleData
     {
         private static void LocalLogError(string FuncName, string ErrorMessage)
         {
@@ -289,7 +289,5 @@ namespace SmartDentalClinic.Data
             }
             return IsFound;
         }
-
-
     }
 }
