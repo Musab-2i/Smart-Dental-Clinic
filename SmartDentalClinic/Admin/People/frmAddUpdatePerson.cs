@@ -282,7 +282,7 @@ namespace SmartDentalClinic.Admin.People
             }
         }
 
-        private void txtNationalID_Validating(object sender, CancelEventArgs e)
+        private async void txtNationalID_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtNationalID.Text.Trim()))
             {
@@ -298,7 +298,7 @@ namespace SmartDentalClinic.Admin.People
             // Or if it's a new person (_Person.NationalNo will be empty)
             if (txtNationalID.Text.Trim() != _Person.NationalID)
             {
-                if (clsPeople.CheckPersonExistByNationalID(txtNationalID.Text.Trim()))
+                if (await clsPeople.CheckPersonExistByNationalIDAsync(txtNationalID.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(txtNationalID, "National Number is already used for another person!");

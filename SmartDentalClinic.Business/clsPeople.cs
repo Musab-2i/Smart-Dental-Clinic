@@ -177,15 +177,15 @@ namespace SmartDentalClinic.Business
             }
         }
 
-        static public async Task <bool> CheckPersonExistByPersonID(int PersonID)
+        static public async Task <bool> CheckPersonExistByPersonIDAsync(int PersonID)
         {
             return await clsPeopleData.CheckPersonExistByPersonIDAsync(PersonID);
         }
-        static public async Task<bool> CheckPersonExistByNationalID(string NationalID)
+        static public async Task<bool> CheckPersonExistByNationalIDAsync(string NationalID)
         {
             return await clsPeopleData.CheckPersonExistByNationalIDAsync(NationalID);
         }
-        static public async Task<bool> DeletePerson(int PersonID)
+        static public async Task<bool> DeletePersonAsync(int PersonID)
         {
             return await clsPeopleData.DeletePersonAsync(PersonID);
         }
