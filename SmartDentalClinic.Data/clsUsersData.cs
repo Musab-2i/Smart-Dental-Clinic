@@ -16,8 +16,8 @@ namespace SmartDentalClinic.Data
             clsDataAccessSettings.ErrorFormating(FuncName, ErrorMessage, "clsUsersData");
         }
 
-        public static async Task<int> AddNewUserAsync(int PersonID, string UserName, 
-                                     string Password, int RoleID, 
+        public static async Task<int> AddNewUserAsync(int PersonID, string UserName,
+                                     string Password, int RoleID,
                                      bool IsActive)
         {
             int UserID = -1;
@@ -53,8 +53,8 @@ namespace SmartDentalClinic.Data
             }
             return UserID;
         }
-        public static async Task<bool> UpdateUserAsync(int UserID, int PersonID, 
-                                      string UserName, string Password, 
+        public static async Task<bool> UpdateUserAsync(int UserID, int PersonID,
+                                      string UserName, string Password,
                                       int RoleID, bool IsActive)
         {
             int RowsAffected = 0;
@@ -112,12 +112,9 @@ namespace SmartDentalClinic.Data
             return (RowsAffected > 0);
         }
 
-            // i'll Remove retrevail Password for security reasons, as it is not a good practice to retrieve passwords from the database.
-        public static bool GetUserInfoByPersonID(int PersonID, ref int UserID, ref string UserName,
-                                                 ref string Password, ref int RoleID,
-                                                 ref bool IsActive)
+        // i'll Remove retrevail Password for security reasons, as it is not a good practice to retrieve passwords from the database.
+        public static async Task<UserDTO> GetUserInfoByPersonIDAsync(int PersonID)
         {
-            bool IsFound = false;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand("SP_Users_GetUserInfoByPersonID", connection))
@@ -127,33 +124,33 @@ namespace SmartDentalClinic.Data
 
                     try
                     {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        await connection.OpenAsync();
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
-                            if (reader.Read())
+                            if (await reader.ReadAsync())
                             {
-                                IsFound = true;
-                                UserID = (int)reader["UserID"];
-                                UserName = (string)reader["UserName"];
-                                Password = (string)reader["Password"];
-                                RoleID = (int)reader["RoleID"];
-                                IsActive = (bool)reader["IsActive"];
+                                return new UserDTO
+                                {
+                                    UserID = (int)reader["UserID"],
+                                    PersonID = PersonID,
+                                    UserName = (string)reader["UserName"],
+                                    Password = (string)reader["Password"],
+                                    RoleID = (int)reader["RoleID"],
+                                    IsActive = (bool)reader["IsActive"]
+                                };
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        LocalLogError(nameof(GetUserInfoByPersonID), ex.Message);
+                        LocalLogError(nameof(GetUserInfoByPersonIDAsync), ex.Message);
                     }
                 }
             }
-            return IsFound;
+            return null;
         }
-        public static bool GetUserInfoByUserID(int UserID, ref int PersonID, ref string UserName,
-                                         ref string Password, ref int RoleID,
-                                         ref bool IsActive)
+        public static async Task<UserDTO> GetUserInfoByUserIDAsync(int UserID)
         {
-            bool IsFound = false;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand("SP_Users_GetUserInfoByUserID", connection))
@@ -163,34 +160,33 @@ namespace SmartDentalClinic.Data
 
                     try
                     {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        await connection.OpenAsync();
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
-                            if (reader.Read())
+                            if (await reader.ReadAsync())
                             {
-                                IsFound = true;
-                                PersonID = (int)reader["PersonID"];
-                                UserName = (string)reader["UserName"];
-                                Password = (string)reader["Password"];
-                                RoleID = (int)reader["RoleID"];
-                                IsActive = (bool)reader["IsActive"];
+                                return new UserDTO
+                                {
+                                    UserID = UserID,
+                                    PersonID = (int)reader["PersonID"],
+                                    UserName = (string)reader["UserName"],
+                                    Password = (string)reader["Password"],
+                                    RoleID = (int)reader["RoleID"],
+                                    IsActive = (bool)reader["IsActive"]
+                                };
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        LocalLogError(nameof(GetUserInfoByUserID), ex.Message);
+                        LocalLogError(nameof(GetUserInfoByUserIDAsync), ex.Message);
                     }
                 }
             }
-            return IsFound;
+            return null;
         }
-
-        public static bool GetUserInfoByUserUserName(string UserName, ref int PersonID, ref int UserID,
-                                         ref string Password, ref int RoleID,
-                                         ref bool IsActive)
+        public static async Task<UserDTO> GetUserInfoByUserUserNameAsync(string UserName)
         {
-            bool IsFound = false;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand("SP_Users_GetUserInfoByUsername", connection))
@@ -200,36 +196,36 @@ namespace SmartDentalClinic.Data
 
                     try
                     {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        await connection.OpenAsync();
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
-                            if (reader.Read())
+                            if (await reader.ReadAsync())
                             {
-                                IsFound = true;
-                                UserID = (int)reader["UserID"];
-                                PersonID = (int)reader["PersonID"];
-                                Password = (string)reader["Password"];
-                                RoleID = (int)reader["RoleID"];
-                                IsActive = (bool)reader["IsActive"];
+                                return new UserDTO
+                                {
+                                    UserID = (int)reader["UserID"],
+                                    PersonID = (int)reader["PersonID"],
+                                    UserName = UserName,
+                                    Password = (string)reader["Password"],
+                                    RoleID = (int)reader["RoleID"],
+                                    IsActive = (bool)reader["IsActive"]
+                                };
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        LocalLogError(nameof(GetUserInfoByUserUserName), ex.Message);
+                        LocalLogError(nameof(GetUserInfoByUserUserNameAsync), ex.Message);
                     }
                 }
             }
-            return IsFound;
+            return null;
         }
 
         //For Login Screen, we will use this method to get the user information by username and password.
-        public static bool GetUserInfoByUserNameAndPassword(string UserName, string Password,
-                                                            ref int PersonID, ref int UserID,
-                                                            ref int RoleID, ref bool IsActive)
+        public static async Task<UserDTO> GetUserInfoByUserNameAndPasswordAsync(string UserName, string Password)
         {
 
-            bool IsFound = false;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand("SP_Users_GetUserInfoByUsernameAndPassword", connection))
@@ -240,26 +236,30 @@ namespace SmartDentalClinic.Data
 
                     try
                     {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        await connection.OpenAsync();
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
-                            if (reader.Read())
+                            if (await reader.ReadAsync())
                             {
-                                IsFound = true;
-                                UserID = (int)reader["UserID"];
-                                PersonID = (int)reader["PersonID"];
-                                RoleID = (int)reader["RoleID"];
-                                IsActive = (bool)reader["IsActive"];
+                                return new UserDTO
+                                {
+                                    UserID = (int)reader["UserID"],
+                                    PersonID = (int)reader["PersonID"],
+                                    UserName = UserName,
+                                    Password = Password,
+                                    RoleID = (int)reader["RoleID"],
+                                    IsActive = (bool)reader["IsActive"]
+                                };
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        LocalLogError(nameof(GetUserInfoByUserNameAndPassword), ex.Message);
+                        LocalLogError(nameof(GetUserInfoByUserNameAndPasswordAsync), ex.Message);
                     }
                 }
             }
-            return IsFound;
+            return null;
 
         }
 
@@ -378,6 +378,37 @@ namespace SmartDentalClinic.Data
                 }
             }
             return (RowsAffected > 0);
+        }
+
+        public static async Task<DataTable> GetAllUsersAsync()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SELECT * FROM vw_Users_UsersList", connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    try
+                    {
+                        await connection.OpenAsync();
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LocalLogError(nameof(GetAllUsersAsync), ex.Message);
+                    }
+                }
+            }
+
+            return dt;
         }
     }
 }

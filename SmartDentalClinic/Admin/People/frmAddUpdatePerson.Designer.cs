@@ -590,6 +590,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblPersonID);
             this.Name = "frmAddUpdatePerson";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Person";
             this.Load += new System.EventHandler(this.frmAddUpdatePerson_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
