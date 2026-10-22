@@ -9,12 +9,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SmartDentalClinic.Admin.People.frmAddUpdatePerson;
 
 namespace SmartDentalClinic.Admin.AddNewUser
 {
     public partial class frmAddUpdateUser : Form
     {
         private DataTable _dtUsersList = new DataTable();
+        private void dgvUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // التأكد من أن التلوين يطبق فقط على عمود "Status" وأن الخلية تحتوي على قيمة
+            if (dgvUsers.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
+            {
+                string statusValue = e.Value.ToString().Trim();
+
+                // إذا كانت الحالة Active
+                if (statusValue.Equals("Active", StringComparison.OrdinalIgnoreCase))
+                {
+                    e.CellStyle.ForeColor = Color.DarkGreen;
+                    e.CellStyle.SelectionForeColor = Color.LightGreen; // لون النص عند تحديد الصف
+                }
+                // إذا كانت الحالة Inactive
+                else if (statusValue.Equals("Inactive", StringComparison.OrdinalIgnoreCase) || statusValue.Equals("In Active", StringComparison.OrdinalIgnoreCase))
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.SelectionForeColor = Color.MistyRose; // لون النص عند تحديد الصف
+                }
+            }
+        }
         public frmAddUpdateUser()
         {
             InitializeComponent();
@@ -44,6 +66,7 @@ namespace SmartDentalClinic.Admin.AddNewUser
         }
         private async void frmAddUpdateUser_Load(object sender, EventArgs e)
         {
+            dgvUsers.CellFormatting += dgvUsers_CellFormatting;
             await _FillRolesComboBox();
             await _RefreshUsersList();
 
@@ -52,11 +75,21 @@ namespace SmartDentalClinic.Admin.AddNewUser
             if (dgvUsers.Columns.Count > 0)
             {
                 dgvUsers.Columns["Name"].HeaderText = "Full Name";
+                dgvUsers.Columns["Name"].Width = 170;
+
                 dgvUsers.Columns["UserName"].HeaderText = "Username";
+                dgvUsers.Columns["UserName"].Width = 100;
+
                 dgvUsers.Columns["RoleName"].HeaderText = "Role";
+                dgvUsers.Columns["RoleName"].Width = 120; 
+
                 //dgvUsers.Columns["IsActive"].Visible = false; 
                 dgvUsers.Columns["Status"].HeaderText = "Status";
+                dgvUsers.Columns["Status"].Width = 80;
+
                 dgvUsers.Columns["PhoneNo"].HeaderText = "Phone Number";
+                dgvUsers.Columns["PhoneNo"].Width = 150;
+
             }
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -75,13 +108,12 @@ namespace SmartDentalClinic.Admin.AddNewUser
             txtFullName.Text = e.FullName;
             lblPersonID.Text = e.PersonID.ToString();
         }
-
-        private async void btnCreateUser_Click(object sender, EventArgs e)
+        private async Task<bool> _CreateUserAsync()
         {
-            if (!this.ValidateChildren())
+            if (!int.TryParse(lblPersonID.Text, out int personID))
             {
-                MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Please select a valid person first.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             clsUsers User = new clsUsers();
             User.PersonID = Convert.ToInt32(lblPersonID.Text);
@@ -91,9 +123,32 @@ namespace SmartDentalClinic.Admin.AddNewUser
             // Assume that the user is active by default when created
             User.IsActive = true;
 
-            if (await User.SaveAsync())
+            return await User.SaveAsync();
+        }
+        private void _ClearInputFields()
+        {
+            txtFullName.Clear();
+            lblPersonID.Text = "N/A";
+            txtUserName.Clear();
+            txtPassword.Clear();
+            txtConfirmPassword.Clear();
+            cbRoles.SelectedIndex = cbRoles.FindString("Administrator");
+            ctrlFindPersonInfoFilter1.ClearInput();
+        }
+        private async void btnCreateUser_Click(object sender, EventArgs e)
+        {
+            if (!this.ValidateChildren())
+            {
+                MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (await _CreateUserAsync())
             {
                 MessageBox.Show("User created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await _RefreshUsersList();
+                // Clear the input fields after successful creation
+                _ClearInputFields();
             }
             else
             {
@@ -118,7 +173,7 @@ namespace SmartDentalClinic.Admin.AddNewUser
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilterBy.Text == "Is Active")
+            if (cbFilterBy.Text == "Status")
             {
                 txtFilterValue.Visible = false;
                 cbIsActiveFilter.Visible = true;
@@ -175,6 +230,83 @@ namespace SmartDentalClinic.Admin.AddNewUser
 
             // Apply RowFilter (Since all these columns in the View are text/string types, we use LIKE for flexible searching)
             _dtUsersList.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilterValue.Text.Trim().Replace("'", "''"));
+
+            _CalculatTotalUsers();
+        }
+        private bool _ValidateEmptyTextBox(TextBox txt, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txt, "This field is required!");
+                return true; // أي أنه فارغ وفيه خطأ
+            }
+            return false; // ليس فارغاً
+        }
+        private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (_ValidateEmptyTextBox(txtConfirmPassword, e)) return;
+
+            else if (txtConfirmPassword.Text.Trim() != txtPassword.Text.Trim())
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtConfirmPassword, "The password does not match!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtConfirmPassword, "");
+            }
+        }
+
+        private async void btnReactivateUser_Click(object sender, EventArgs e)
+        {
+            if(await clsUsers.ReactivateUserAsync(dgvUsers.CurrentRow.Cells["UserName"].Value.ToString()))
+            {
+                MessageBox.Show("User reactivated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await _RefreshUsersList();
+            }
+            else
+            {
+                MessageBox.Show("Failed to reactivate user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btnDeactivateUser_Click(object sender, EventArgs e)
+        {
+            if (await clsUsers.DeactivateUserAsync(dgvUsers.CurrentRow.Cells["UserName"].Value.ToString()))
+            {
+                MessageBox.Show("User Deactivated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await _RefreshUsersList();
+            }
+            else
+            {
+                MessageBox.Show("Failed to Deactivate user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbIsActiveFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filterColumn = "Status";
+
+            switch (cbIsActiveFilter.Text)
+            {
+                case "Active":
+                    // تصفية السجلات للحالة النشطة فقط
+                    _dtUsersList.DefaultView.RowFilter = string.Format("[{0}] = 'Active'", filterColumn);
+                    break;
+
+                case "InActive":
+                case "Inactive":
+                    // تصفية السجلات للحالة غير النشطة
+                    _dtUsersList.DefaultView.RowFilter = string.Format("[{0}] = 'InActive'", filterColumn);
+                    break;
+
+                default:
+                    // عند اختيار "All" يتم إلغاء الفلتر وعرض الكل
+                    _dtUsersList.DefaultView.RowFilter = "";
+                    break;
+            }
 
             _CalculatTotalUsers();
         }

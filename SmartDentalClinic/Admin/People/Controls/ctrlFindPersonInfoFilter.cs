@@ -91,5 +91,10 @@ namespace SmartDentalClinic.Admin.People.Controls
         {
             txtFilterValue.Focus();
         }
+        public void ClearInput()
+        {
+            txtFilterValue.Clear();
+            cbSearchPerson.SelectedIndex = 0; // Reset to the first option
+        }
     }
 }

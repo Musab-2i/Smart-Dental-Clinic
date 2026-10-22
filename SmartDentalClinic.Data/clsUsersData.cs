@@ -353,7 +353,7 @@ namespace SmartDentalClinic.Data
             return (RowsAffected > 0);
         }
 
-        public static async Task<bool> ChangeUserStatusAsync(int UserID, bool IsActive)
+        public static async Task<bool> ChangeUserStatusAsync(string UserName, bool IsActive)
         {
             int RowsAffected = 0;
             string Procedure = IsActive == true ? "SP_Users_ActivateUser" : "SP_Users_DeactivateUser";
@@ -363,7 +363,7 @@ namespace SmartDentalClinic.Data
                 using (SqlCommand command = new SqlCommand(Procedure, connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@UserID", UserID);
+                    command.Parameters.AddWithValue("@UserName", UserName);
 
                     try
                     {

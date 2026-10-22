@@ -172,6 +172,14 @@ namespace SmartDentalClinic.Business
             return IsUpdated;
         }
 
+        public static async Task<bool> ReactivateUserAsync(string UserName)
+        {
+            return await clsUsersData.ChangeUserStatusAsync(UserName, true);
+        }
+        public static async Task<bool> DeactivateUserAsync(string UserName)
+        {
+            return await clsUsersData.ChangeUserStatusAsync(UserName, false);
+        }
         public static async Task<DataTable> GetAllUsersListAsync()
         {
             return await clsUsersData.GetAllUsersAsync();

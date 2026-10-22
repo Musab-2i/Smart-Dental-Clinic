@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnReactivateUser = new System.Windows.Forms.Button();
             this.lblDataRecords = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbIsActiveFilter = new System.Windows.Forms.ComboBox();
@@ -64,7 +65,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnReactivateUser);
             this.groupBox1.Controls.Add(this.lblDataRecords);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbIsActiveFilter);
@@ -73,7 +74,7 @@
             this.groupBox1.Controls.Add(this.txtFilterValue);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dgvUsers);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(675, 599);
@@ -81,17 +82,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Users && Roles";
             // 
-            // button1
+            // btnReactivateUser
             // 
-            this.button1.BackColor = System.Drawing.Color.LightGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.button1.Location = new System.Drawing.Point(397, 545);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 32);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Reactivate User";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnReactivateUser.BackColor = System.Drawing.Color.LightGreen;
+            this.btnReactivateUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReactivateUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.btnReactivateUser.Location = new System.Drawing.Point(397, 545);
+            this.btnReactivateUser.Name = "btnReactivateUser";
+            this.btnReactivateUser.Size = new System.Drawing.Size(133, 32);
+            this.btnReactivateUser.TabIndex = 13;
+            this.btnReactivateUser.Text = "Reactivate User";
+            this.btnReactivateUser.UseVisualStyleBackColor = false;
+            this.btnReactivateUser.Click += new System.EventHandler(this.btnReactivateUser_Click);
             // 
             // lblDataRecords
             // 
@@ -127,6 +129,7 @@
             this.cbIsActiveFilter.Size = new System.Drawing.Size(98, 24);
             this.cbIsActiveFilter.TabIndex = 4;
             this.cbIsActiveFilter.Visible = false;
+            this.cbIsActiveFilter.SelectedIndexChanged += new System.EventHandler(this.cbIsActiveFilter_SelectedIndexChanged);
             // 
             // cbFilterBy
             // 
@@ -157,6 +160,7 @@
             this.btnDeactivateUser.TabIndex = 12;
             this.btnDeactivateUser.Text = "Deactivate User";
             this.btnDeactivateUser.UseVisualStyleBackColor = false;
+            this.btnDeactivateUser.Click += new System.EventHandler(this.btnDeactivateUser_Click);
             // 
             // txtFilterValue
             // 
@@ -183,11 +187,15 @@
             this.dgvUsers.AllowUserToAddRows = false;
             this.dgvUsers.AllowUserToDeleteRows = false;
             this.dgvUsers.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Location = new System.Drawing.Point(6, 112);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
+            this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsers.Size = new System.Drawing.Size(663, 420);
             this.dgvUsers.TabIndex = 0;
             // 
@@ -208,7 +216,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtFullName);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.groupBox2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.groupBox2.Location = new System.Drawing.Point(693, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(446, 599);
@@ -285,7 +293,7 @@
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.Size = new System.Drawing.Size(266, 23);
             this.txtConfirmPassword.TabIndex = 10;
-            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.HandlingNullValues);
+            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
             // label8
             // 
@@ -425,7 +433,7 @@
         private System.Windows.Forms.Button btnDeactivateUser;
         private System.Windows.Forms.Button btnCreateUser;
         private People.Controls.ctrlFindPersonInfoFilter ctrlFindPersonInfoFilter1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReactivateUser;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lblPersonID;
         private System.Windows.Forms.Label label15;
