@@ -27,13 +27,13 @@ namespace SmartDentalClinic.Admin.AddNewUser
                 if (statusValue.Equals("Active", StringComparison.OrdinalIgnoreCase))
                 {
                     e.CellStyle.ForeColor = Color.DarkGreen;
-                    e.CellStyle.SelectionForeColor = Color.LightGreen; // لون النص عند تحديد الصف
+                    e.CellStyle.SelectionForeColor = Color.DarkGreen; // لون النص عند تحديد الصف
                 }
                 // إذا كانت الحالة Inactive
                 else if (statusValue.Equals("Inactive", StringComparison.OrdinalIgnoreCase) || statusValue.Equals("In Active", StringComparison.OrdinalIgnoreCase))
                 {
                     e.CellStyle.ForeColor = Color.Red;
-                    e.CellStyle.SelectionForeColor = Color.MistyRose; // لون النص عند تحديد الصف
+                    e.CellStyle.SelectionForeColor = Color.Red; // لون النص عند تحديد الصف
                 }
             }
         }

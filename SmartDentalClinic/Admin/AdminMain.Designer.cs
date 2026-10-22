@@ -73,6 +73,7 @@
             this.asdToolStripMenuItem.Size = new System.Drawing.Size(197, 28);
             this.asdToolStripMenuItem.Text = "   Dashboard";
             this.asdToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.asdToolStripMenuItem.Click += new System.EventHandler(this.asdToolStripMenuItem_Click);
             // 
             // patientsToolStripMenuItem
             // 

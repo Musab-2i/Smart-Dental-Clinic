@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnReactivateUser = new System.Windows.Forms.Button();
             this.lblDataRecords = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ctrlFindPersonInfoFilter1 = new SmartDentalClinic.Admin.People.Controls.ctrlFindPersonInfoFilter();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -57,6 +57,7 @@
             this.txtFullName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlFindPersonInfoFilter1 = new SmartDentalClinic.Admin.People.Controls.ctrlFindPersonInfoFilter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -142,7 +143,7 @@
             "UserName",
             "Role",
             "Status",
-            "Created"});
+            "Phone"});
             this.cbFilterBy.Location = new System.Drawing.Point(70, 66);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(159, 24);
@@ -188,10 +189,20 @@
             this.dgvUsers.AllowUserToDeleteRows = false;
             this.dgvUsers.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsers.Location = new System.Drawing.Point(6, 112);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
@@ -223,16 +234,6 @@
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Create User";
-            // 
-            // ctrlFindPersonInfoFilter1
-            // 
-            this.ctrlFindPersonInfoFilter1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.ctrlFindPersonInfoFilter1.Location = new System.Drawing.Point(73, 66);
-            this.ctrlFindPersonInfoFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctrlFindPersonInfoFilter1.Name = "ctrlFindPersonInfoFilter1";
-            this.ctrlFindPersonInfoFilter1.Size = new System.Drawing.Size(366, 108);
-            this.ctrlFindPersonInfoFilter1.TabIndex = 16;
-            this.ctrlFindPersonInfoFilter1.OnPersonSelected += new System.EventHandler<SmartDentalClinic.Admin.People.Controls.ctrlFindPersonInfoFilter.DataBackEventArgs>(this.ctrlFindPersonInfoFilter1_OnPersonSelected);
             // 
             // lblPersonID
             // 
@@ -395,6 +396,16 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // ctrlFindPersonInfoFilter1
+            // 
+            this.ctrlFindPersonInfoFilter1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.ctrlFindPersonInfoFilter1.Location = new System.Drawing.Point(73, 66);
+            this.ctrlFindPersonInfoFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlFindPersonInfoFilter1.Name = "ctrlFindPersonInfoFilter1";
+            this.ctrlFindPersonInfoFilter1.Size = new System.Drawing.Size(366, 108);
+            this.ctrlFindPersonInfoFilter1.TabIndex = 16;
+            this.ctrlFindPersonInfoFilter1.OnPersonSelected += new System.EventHandler<SmartDentalClinic.Admin.People.Controls.ctrlFindPersonInfoFilter.DataBackEventArgs>(this.ctrlFindPersonInfoFilter1_OnPersonSelected);
             // 
             // frmAddUpdateUser
             // 

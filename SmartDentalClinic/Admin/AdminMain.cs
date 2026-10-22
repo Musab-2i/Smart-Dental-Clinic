@@ -1,4 +1,5 @@
 ﻿using SmartDentalClinic.Admin.AddNewUser;
+using SmartDentalClinic.Admin.DashBoard;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,32 @@ namespace SmartDentalClinic
         public AdminMain()
         {
             InitializeComponent();
+            openChildForm(new frmDashBoard());
+            asdToolStripMenuItem.PerformClick();
+        }
+        private void ResetMenuColors()
+        {
+            // إعادة الألوان للوضع الافتراضي
+            asdToolStripMenuItem.BackColor = Color.Transparent;
+            asdToolStripMenuItem.ForeColor = Color.White;
+            usersRolesToolStripMenuItem.BackColor = Color.Transparent;
+            usersRolesToolStripMenuItem.ForeColor = Color.White;
+        }
+        private void asdToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetMenuColors();
+            asdToolStripMenuItem.BackColor = ColorTranslator.FromHtml("#E9EEF6");
+            asdToolStripMenuItem.ForeColor = Color.Teal;
+            openChildForm(new frmDashBoard());
+        }
+
+        private void usersRolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetMenuColors();
+            usersRolesToolStripMenuItem.BackColor = ColorTranslator.FromHtml("#E9EEF6");
+            usersRolesToolStripMenuItem.ForeColor = Color.Teal;
+
+            openChildForm(new frmAddUpdateUser());
         }
         private Form activeForm = null;
 
@@ -44,9 +71,14 @@ namespace SmartDentalClinic
             childForm.BringToFront();
             childForm.Show();
         }
-        private void usersRolesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmAddUpdateUser());
-        }
+        //private void usersRolesToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    openChildForm(new frmAddUpdateUser());
+        //}
+
+        //private void asdToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    openChildForm(new frmDashBoard());
+        //}
     }
 }

@@ -58,6 +58,18 @@
     <Compile Include="Admin\AdminMain.Designer.cs">
       <DependentUpon>AdminMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\DashBoard\Controls\ctrlDashboardCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\DashBoard\Controls\ctrlDashboardCard.Designer.cs">
+      <DependentUpon>ctrlDashboardCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DashBoard\frmDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\DashBoard\frmDashBoard.Designer.cs">
+      <DependentUpon>frmDashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\People\Controls\ctrlFindPersonInfoFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,6 +98,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\AdminMain.resx">
       <DependentUpon>AdminMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\DashBoard\Controls\ctrlDashboardCard.resx">
+      <DependentUpon>ctrlDashboardCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\DashBoard\frmDashBoard.resx">
+      <DependentUpon>frmDashBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\People\Controls\ctrlFindPersonInfoFilter.resx">
       <DependentUpon>ctrlFindPersonInfoFilter.cs</DependentUpon>
@@ -150,7 +168,7 @@
     <None Include="Resources\invoices.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\Controls\" />
+    <None Include="Resources\multiple-users-silhouette.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Female 512.png" />
@@ -193,6 +211,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SearchPerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multiple-users-silhouette1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multiple-users-silhouette2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multiple-users-silhouette3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PatientsDashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ActiveUsersDashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppointmentsDashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UnpaidInvoicesDashboard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
