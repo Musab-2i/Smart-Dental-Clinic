@@ -1,4 +1,6 @@
-﻿using SmartDentalClinic.Business;
+﻿using SmartDentalClinic.Admin.AddNewUser;
+using SmartDentalClinic.Admin.Controls;
+using SmartDentalClinic.Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,16 +26,12 @@ namespace SmartDentalClinic.Admin.DashBoard
             {
                 // 3. تمرير كل رقم للبطاقة الخاصة فيه باستخدام الخاصية Value
 
-                // بطاقة المستخدمين النشطين
                 cardActiveUsers.Value = dashboardSummary.ActiveUsers.ToString();
 
-                // بطاقة المرضى (استخدمنا "N0" عشان يضيف فواصل الآلاف زي 1,284)
                 cardPatients.Value = dashboardSummary.TotalPatients.ToString("N0");
 
-                // بطاقة مواعيد اليوم
                 cardAppointments.Value = dashboardSummary.AppointmentsToday.ToString();
 
-                // بطاقة الفواتير غير المدفوعة
                 cardInvoices.Value = dashboardSummary.UnpaidInvoices.ToString();
             }
         }
@@ -51,11 +49,36 @@ namespace SmartDentalClinic.Admin.DashBoard
                 dgvUsersByRole.Columns["UserCount"].Width = 155;
             }
         }
+        private void BindCardToForm(ctrlQuickAccessCard card, Func<Form> formFactory)
+        {
+            card.OnCardClicked = () =>
+            {
+                // 1. جلب الشاشة الرئيسية (الأب) المفتوحة حالياً
+                AdminMain mainForm = (AdminMain)this.ParentForm;
+
+                // 2. أمر الشاشة الرئيسية بفتح الشاشة المُمررة بداخلها
+                if (mainForm != null)
+                {
+                    // formFactory() ستقوم بإنشاء الفورم "فقط" لحظة النقر
+                    mainForm.openChildForm(formFactory());
+                }
+            };
+        }
         private async void frmDashBoard_Load(object sender, EventArgs e)
         {
             await _FillUserCtrl();
             await _FillUsersByRoleGrid();
+            BindCardToForm(cardQuickAccessManageUsers, () => new frmAddUpdateUser());
+        }
 
+        //Delete This Method if you don't want to use it, it's just an example of how to use the card click event
+        private void cardQuickAccessManageUsers_Click(object sender, EventArgs e)
+        {
+            //// بطاقة المواعيد (كمثال)
+            //cardQuickAccessAppointments.OnCardClicked = () => adminMain.openChildForm(new frmAppointments());
+
+            //// بطاقة الفواتير (كمثال)
+            //cardQuickAccessBilling.OnCardClicked = () => adminMain.openChildForm(new frmBilling());
         }
     }
 }

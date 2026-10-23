@@ -46,7 +46,7 @@ namespace SmartDentalClinic
         }
         private Form activeForm = null;
 
-        private void openChildForm(Form childForm)
+        public void openChildForm(Form childForm)
         {
             // 1. إذا كان في شاشة مفتوحة أصلاً، سكرها
             if (activeForm != null)
@@ -71,14 +71,6 @@ namespace SmartDentalClinic
             childForm.BringToFront();
             childForm.Show();
         }
-        //private void usersRolesToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    openChildForm(new frmAddUpdateUser());
-        //}
 
-        //private void asdToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    openChildForm(new frmDashBoard());
-        //}
     }
 }

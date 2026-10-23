@@ -58,6 +58,12 @@
     <Compile Include="Admin\AdminMain.Designer.cs">
       <DependentUpon>AdminMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Controls\ctrlQuickAccessCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Controls\ctrlQuickAccessCard.Designer.cs">
+      <DependentUpon>ctrlQuickAccessCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\DashBoard\Controls\ctrlDashboardCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\AdminMain.resx">
       <DependentUpon>AdminMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Controls\ctrlQuickAccessCard.resx">
+      <DependentUpon>ctrlQuickAccessCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\DashBoard\Controls\ctrlDashboardCard.resx">
       <DependentUpon>ctrlDashboardCard.cs</DependentUpon>
@@ -232,6 +241,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\UnpaidInvoicesDashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueInvoicesDashboard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
