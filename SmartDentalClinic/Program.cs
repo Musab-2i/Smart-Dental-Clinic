@@ -1,4 +1,5 @@
-﻿using SmartDentalClinic.Login;
+﻿using SmartDentalClinic.GlobalClass;
+using SmartDentalClinic.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +22,33 @@ namespace SmartDentalClinic
 
             frmLogin loginForm = new frmLogin();
 
-            // 2. نختبر: هل رجعت الشاشة بإشارة "OK" (نجاح الدخول)؟
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                // إذا نجح الدخول، نجعل الشاشة الرئيسية هي الأساسية للبرنامج
-                Application.Run(new AdminMain());
+                switch(clsGlobal.CurrentUser.RoleID)
+                {
+                    case 1:
+                        // Admin role
+                        Application.Run(new AdminMain());
+                        break;
+                        // Not Fully Implemented Yet
+                        /*
+                    case 2:
+                        // Receptionist role
+                        Application.Run(new ReceptionistMain());
+                        break;
+                    case 3:
+                        // Doctor role
+                        Application.Run(new DoctorMain());
+                        break;
+                        */
+                    default:
+                        // Unknown role, exit application
+                        Application.Exit();
+                        break;
+                }
             }
             else
             {
-                // إذا قام المستخدم بالضغط على زر (X) لإغلاق شاشة الدخول، ننهي البرنامج تماماً
                 Application.Exit();
             }
         }

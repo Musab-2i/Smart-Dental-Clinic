@@ -51,7 +51,6 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsername.Font = new System.Drawing.Font("Arial", 9.75F);
             this.txtUsername.Location = new System.Drawing.Point(76, 324);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -129,7 +128,6 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Arial", 9.75F);
             this.txtPassword.Location = new System.Drawing.Point(76, 383);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -233,6 +231,7 @@
             this.AcceptButton = this.btnSignIn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(434, 597);
             this.Controls.Add(this.lblErrorType);
             this.Controls.Add(this.chkRememberMe);
