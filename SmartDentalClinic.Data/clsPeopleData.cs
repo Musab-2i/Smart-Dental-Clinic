@@ -8,6 +8,22 @@ using System.Threading.Tasks;
 
 namespace SmartDentalClinic.Data
 {
+    public class PersonDTO
+    {
+        public int PersonID { get; set; }
+        public int NationalCountryID { get; set; }
+        public string NationalID { get; set; }
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string ThirdName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string PhoneNo { get; set; }
+        public string Email { get; set; }
+        public string ImagePath { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public byte Gender { get; set; }
+    }
     public class clsPeopleData
     {
         private static void LocalLogError(string FuncName, string ErrorMessage)
@@ -107,104 +123,69 @@ namespace SmartDentalClinic.Data
             return (RowsAffected > 0);
         }
 
-        public static bool GetPersonInfoByPersonID(int PersonID, ref int NationalCountryID, ref string NationalID,
-                               ref string FirstName, ref string SecondName, ref string ThirdName,
-                               ref string LastName, ref string Address, ref string PhoneNo,
-                               ref string Email, ref string ImagePath, ref DateTime DateOfBirth,
-                               ref byte Gender)
+        public static Task<PersonDTO> GetPersonInfoByPersonIDAsync(int personID)
         {
-            bool Found = false;
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand("SP_People_GetPersonInfoByPersonID", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                Found = true;
-
-                                NationalCountryID = (int)reader["NationalCountryID"];
-                                NationalID = (string)reader["NationalID"];
-                                FirstName = (string)reader["FirstName"];
-                                SecondName = (string)reader["SecondName"];
-                                LastName = (string)reader["LastName"];
-                                Address = (string)reader["Address"];
-                                PhoneNo = (string)reader["PhoneNo"];
-                                DateOfBirth = (DateTime)reader["DateOfBirth"];
-                                Gender = (byte)reader["Gender"];
-
-                                // القيم التي قد تكون NULL
-                                ThirdName = (reader["ThirdName"] != DBNull.Value) ? (string)reader["ThirdName"] : "";
-                                Email = (reader["Email"] != DBNull.Value) ? (string)reader["Email"] : "";
-                                ImagePath = (reader["ImagePath"] != DBNull.Value) ? (string)reader["ImagePath"] : "";
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        LocalLogError(nameof(GetPersonInfoByPersonID), ex.Message);
-                    }
-                }
-                return Found;
-            }
-
+            return GetPersonInfoAsync(
+                "SP_People_GetPersonInfoByPersonID",
+                "@PersonID",
+                personID);
         }
 
-        public static bool GetPersonInfoByNationalID(string NationalID, ref int NationalCountryID, ref int PersonID,
-                               ref string FirstName, ref string SecondName, ref string ThirdName,
-                               ref string LastName, ref string Address, ref string PhoneNo,
-                               ref string Email, ref string ImagePath, ref DateTime DateOfBirth,
-                               ref byte Gender)
+        public static Task<PersonDTO> GetPersonInfoByNationalIDAsync(string nationalID)
         {
-            bool Found = false;
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            return GetPersonInfoAsync(
+                "SP_People_GetPersonInfoByNationalID",
+                "@NationalID",
+                nationalID);
+        }
+        private static async Task<PersonDTO> GetPersonInfoAsync(string storedProcedure, string parameterName,
+                                                                object parameterValue)
+        {
+            try
             {
-                using (SqlCommand command = new SqlCommand("SP_People_GetPersonInfoByNationalID", connection))
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                using (SqlCommand command = new SqlCommand(storedProcedure, connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@NationalID", NationalID);
-                    try
+
+                    command.Parameters.AddWithValue(parameterName, parameterValue ?? DBNull.Value);
+
+                    await connection.OpenAsync();
+
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
                     {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        if (!await reader.ReadAsync()) return null;
+
+                        return new PersonDTO
                         {
-                            if (reader.Read())
-                            {
-                                Found = true;
+                            PersonID = Convert.ToInt32(reader["PersonID"]),
+                            NationalCountryID = Convert.ToInt32(reader["NationalCountryID"]),
 
-                                PersonID = (int)reader["PersonID"];
-                                NationalCountryID = (int)reader["NationalCountryID"];
-                                FirstName = (string)reader["FirstName"];
-                                SecondName = (string)reader["SecondName"];
-                                LastName = (string)reader["LastName"];
-                                Address = (string)reader["Address"];
-                                PhoneNo = (string)reader["PhoneNo"];
-                                DateOfBirth = (DateTime)reader["DateOfBirth"];
-                                Gender = (byte)reader["Gender"];
+                            NationalID = Convert.ToString(reader["NationalID"]),
+                            FirstName = Convert.ToString(reader["FirstName"]),
+                            SecondName = Convert.ToString(reader["SecondName"]),
+                            ThirdName = reader["ThirdName"] == DBNull.Value ? "" : Convert.ToString(reader["ThirdName"]),
+                            LastName = Convert.ToString(reader["LastName"]),
+                            Address = Convert.ToString(reader["Address"]),
+                            PhoneNo = Convert.ToString(reader["PhoneNo"]),
 
-                                // القيم التي قد تكون NULL
-                                ThirdName = (reader["ThirdName"] != DBNull.Value) ? (string)reader["ThirdName"] : "";
-                                Email = (reader["Email"] != DBNull.Value) ? (string)reader["Email"] : "";
-                                ImagePath = (reader["ImagePath"] != DBNull.Value) ? (string)reader["ImagePath"] : "";
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        LocalLogError(nameof(GetPersonInfoByNationalID), ex.Message);
+                            Email = reader["Email"] == DBNull.Value ? "" : Convert.ToString(reader["Email"]),
+                            ImagePath = reader["ImagePath"] == DBNull.Value ? "" : Convert.ToString(reader["ImagePath"]),
+
+                            DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
+                            Gender = Convert.ToByte(reader["Gender"])
+                        };
                     }
                 }
-                return Found;
             }
+            catch (Exception ex)
+            {
+                LocalLogError(
+                    nameof(GetPersonInfoAsync), $"{storedProcedure}: {ex}");
 
+                return null;
+            }
         }
-
         public static async Task<bool> DeletePersonAsync(int PersonID)
         {
             int RowsAffected = 0;

@@ -114,6 +114,29 @@ namespace SmartDentalClinic.Business
                 );
         }
 
+        private static async Task<clsPeople> FindAsync(Func<Task<PersonDTO>> fetchFromDal)
+        {
+            PersonDTO dto = await fetchFromDal();
+
+            if (dto == null)
+                return null;
+
+            return new clsPeople(
+                dto.PersonID,
+                dto.NationalCountryID,
+                dto.NationalID,
+                dto.FirstName,
+                dto.SecondName,
+                dto.ThirdName,
+                dto.LastName,
+                dto.Address,
+                dto.PhoneNo,
+                dto.Email,
+                dto.ImagePath,
+                dto.DateOfBirth,
+                dto.Gender);
+        }
+
         public async Task<bool> SaveAsync()
         {
             switch (Mode)
@@ -133,48 +156,16 @@ namespace SmartDentalClinic.Business
             }
             return false;
         }
-        static public clsPeople Find(int PersonID)
+        public static Task<clsPeople> FindAsync(int personID)
         {
-            string NationalID = "", FirstName = "", SecondName = "", ThirdName = "", LastName = "", Address = "", PhoneNo = "", Email = "", ImagePath = "";
-            DateTime DateOfBirth = DateTime.Now;
-            byte Gender = 0;
-            int NationalCountryID = -1;
-            if (clsPeopleData.GetPersonInfoByPersonID(PersonID, ref NationalCountryID, ref NationalID, ref FirstName,
-                         ref SecondName, ref ThirdName, ref LastName, ref Address,
-                         ref PhoneNo, ref Email, ref ImagePath, ref DateOfBirth,
-                         ref Gender))
-            {
-                return new clsPeople(PersonID, NationalCountryID, NationalID, FirstName,
-                          SecondName, ThirdName, LastName, Address,
-                          PhoneNo, Email, ImagePath, DateOfBirth,
-                          Gender);
-            }
-            else
-            {
-                return null;
-            }
+            return FindAsync(
+                () => clsPeopleData.GetPersonInfoByPersonIDAsync(personID));
         }
-        static public clsPeople Find(string NationalID)
+
+        public static Task<clsPeople> FindAsync(string nationalID)
         {
-            int PersonID = -1;
-            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", Address = "", PhoneNo = "", Email = "", ImagePath = "";
-            DateTime DateOfBirth = DateTime.Now;
-            byte Gender = 0;
-            int NationalCountryID = -1;
-            if (clsPeopleData.GetPersonInfoByNationalID(NationalID, ref NationalCountryID, ref PersonID, ref FirstName,
-                         ref SecondName, ref ThirdName, ref LastName, ref Address,
-                         ref PhoneNo, ref Email, ref ImagePath, ref DateOfBirth,
-                         ref Gender))
-            {
-                return new clsPeople(PersonID, NationalCountryID, NationalID, FirstName,
-                          SecondName, ThirdName, LastName, Address,
-                          PhoneNo, Email, ImagePath, DateOfBirth,
-                          Gender);
-            }
-            else
-            {
-                return null;
-            }
+            return FindAsync(
+                () => clsPeopleData.GetPersonInfoByNationalIDAsync(nationalID));
         }
 
         static public async Task <bool> CheckPersonExistByPersonIDAsync(int PersonID)

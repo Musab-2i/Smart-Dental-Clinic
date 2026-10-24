@@ -119,9 +119,9 @@ namespace SmartDentalClinic.Admin.People
             dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
             dtpDateOfBirth.CustomFormat = "dd/MM/yyyy";
         }
-        private void _LoadData()
+        private async void _LoadData()
         {
-            _Person = clsPeople.Find(_PersonID);
+            _Person = await clsPeople.FindAsync(_PersonID);
 
             if (_Person == null)
             {

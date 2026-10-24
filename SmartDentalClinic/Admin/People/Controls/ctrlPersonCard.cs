@@ -70,9 +70,9 @@ namespace SmartDentalClinic.Admin.People.Controls
             lblAddress.Text = "[????]";
             pbPersonImage.Image = Resources.Male_512;
         }
-        public void LoadPersonInfo(int PersonID)
+        public async void LoadPersonInfo(int PersonID)
         {
-            _Person = clsPeople.Find(PersonID);
+            _Person = await clsPeople.FindAsync(PersonID);
 
             if( _Person == null )
             {
@@ -82,9 +82,9 @@ namespace SmartDentalClinic.Admin.People.Controls
             }
             _FillPersonInfo();
         }
-        public void LoadPersonInfo(string NationalID)
+        public async void LoadPersonInfo(string NationalID)
         {
-            _Person = clsPeople.Find(NationalID);
+            _Person = await clsPeople.FindAsync(NationalID);
 
             if (_Person == null)
             {

@@ -53,7 +53,7 @@ namespace SmartDentalClinic.Admin.People.Controls
 
             return true;
         }
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
             _Person = null;
             switch (cbSearchPerson.Text)
@@ -62,7 +62,7 @@ namespace SmartDentalClinic.Admin.People.Controls
                     if (CheckIfTextBoxValueIsValidToSearch())
                     {
                         string NationalID = txtFilterValue.Text.Trim();
-                        _Person = clsPeople.Find(NationalID);
+                        _Person = await clsPeople.FindAsync(NationalID);
                         if(_Person == null)
                         {
                             MessageBox.Show("No person found with this National ID.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -75,7 +75,7 @@ namespace SmartDentalClinic.Admin.People.Controls
                     if (CheckIfTextBoxValueIsValidToSearch())
                     {
                         int PersonID = Convert.ToInt32(txtFilterValue.Text.Trim());
-                        _Person = clsPeople.Find(PersonID);
+                        _Person = await clsPeople.FindAsync(PersonID);
                         if (_Person == null)
                         {
                             MessageBox.Show("No person found with this Person ID.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
