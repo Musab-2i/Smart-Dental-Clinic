@@ -94,9 +94,19 @@
     <Compile Include="Admin\People\frmAddUpdatePerson.Designer.cs">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalClass\clsEncryptionDecryption.cs" />
+    <Compile Include="GlobalClass\clsEventLogger.cs" />
     <Compile Include="GlobalClass\clsFormat.cs" />
+    <Compile Include="GlobalClass\clsGlobal.cs" />
+    <Compile Include="GlobalClass\clsRegistry.cs" />
     <Compile Include="GlobalClass\clsUtil.cs" />
     <Compile Include="GlobalClass\clsValidations.cs" />
+    <Compile Include="Login\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Admin\AddNewUser\frmAddUpdateUser.resx">
@@ -122,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\People\frmAddUpdatePerson.resx">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -250,6 +263,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BlueInvoicesDashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DentalClincLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

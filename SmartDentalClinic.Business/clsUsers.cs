@@ -143,6 +143,7 @@ namespace SmartDentalClinic.Business
 
         public static async Task<clsUsers> FindByUsernameAndPasswordAsync(string userName, string password)
         {
+            password = GetHashPassowrdValue(password);
             return await _ExecuteFindAsync(() => clsUsersData.GetUserInfoByUserNameAndPasswordAsync(userName, password));
         }
 
