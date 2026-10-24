@@ -1,5 +1,6 @@
 ﻿using SmartDentalClinic.GlobalClass;
 using SmartDentalClinic.Login;
+using SmartDentalClinic.Receptionist;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +32,11 @@ namespace SmartDentalClinic
                         Application.Run(new AdminMain());
                         break;
                         // Not Fully Implemented Yet
-                        /*
                     case 2:
                         // Receptionist role
-                        Application.Run(new ReceptionistMain());
+                        Application.Run(new frmReceptionistMain());
                         break;
+                        /*
                     case 3:
                         // Doctor role
                         Application.Run(new DoctorMain());

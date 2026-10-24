@@ -15,13 +15,18 @@ namespace SmartDentalClinic.Data
         public int AppointmentsToday { get; set; }
         public int UnpaidInvoices { get; set; }
     }
-    public static class clsDashboardData
+    public static class clsAdminDashboardData
     {
+        private static void LocalLogError(string FuncName, string ErrorMessage)
+        {
+            clsDataAccessSettings.ErrorFormating(FuncName, ErrorMessage, "clsAdminDashboardData");
+        }
+
         public static async Task<DashboardSummaryDTO> GetDashboardSummaryAsync()
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                using (SqlCommand command = new SqlCommand("SP_Dashboard_GetSummary", connection))
+                using (SqlCommand command = new SqlCommand("SP_Dashboard_Admin_GetSummary", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -45,7 +50,7 @@ namespace SmartDentalClinic.Data
                     }
                     catch (Exception ex)
                     {
-                        // تسجيل الخطأ إن لزم الأمر
+                        LocalLogError(nameof(GetDashboardSummaryAsync), ex.Message);
                     }
                 }
             }
@@ -58,7 +63,7 @@ namespace SmartDentalClinic.Data
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                using (SqlCommand command = new SqlCommand("SP_Dashboard_GetUsersCountByRole", connection))
+                using (SqlCommand command = new SqlCommand("SP_Dashboard_Admin_GetUsersCountByRole", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -75,7 +80,7 @@ namespace SmartDentalClinic.Data
                     }
                     catch (Exception ex)
                     {
-                        // تسجيل الخطأ
+                        LocalLogError(nameof(GetUsersCountByRoleAsync), ex.Message);
                     }
                 }
             }

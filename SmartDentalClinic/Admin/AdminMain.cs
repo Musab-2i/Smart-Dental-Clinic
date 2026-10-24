@@ -1,5 +1,6 @@
 ﻿using SmartDentalClinic.Admin.AddNewUser;
 using SmartDentalClinic.Admin.DashBoard;
+using SmartDentalClinic.GlobalClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,9 +25,9 @@ namespace SmartDentalClinic
         {
             // إعادة الألوان للوضع الافتراضي
             asdToolStripMenuItem.BackColor = Color.Transparent;
-            asdToolStripMenuItem.ForeColor = Color.White;
+            asdToolStripMenuItem.ForeColor = Color.WhiteSmoke;
             usersRolesToolStripMenuItem.BackColor = Color.Transparent;
-            usersRolesToolStripMenuItem.ForeColor = Color.White;
+            usersRolesToolStripMenuItem.ForeColor = Color.WhiteSmoke;
         }
         private void asdToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -72,5 +73,10 @@ namespace SmartDentalClinic
             childForm.Show();
         }
 
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsGlobal.CurrentUser = null;
+            Application.Restart();
+        }
     }
 }

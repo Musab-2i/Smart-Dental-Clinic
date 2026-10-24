@@ -43,10 +43,11 @@
   <ItemGroup>
     <Compile Include="clsBusinessUtil.cs" />
     <Compile Include="clsCountries.cs" />
-    <Compile Include="clsDashboard.cs" />
+    <Compile Include="Dashboards\clsAdminDashboard.cs" />
     <Compile Include="clsPeople.cs" />
     <Compile Include="clsRoles.cs" />
     <Compile Include="clsUsers.cs" />
+    <Compile Include="Dashboards\clsReceptionistDashboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

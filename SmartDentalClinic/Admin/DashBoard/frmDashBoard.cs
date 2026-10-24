@@ -21,7 +21,7 @@ namespace SmartDentalClinic.Admin.DashBoard
         }
         private async Task _FillUserCtrl()
         {
-            clsDashboard dashboardSummary = await clsDashboard.GetSummaryAsync();
+            clsAdminDashboard dashboardSummary = await clsAdminDashboard.GetSummaryAsync();
             if (dashboardSummary != null)
             {
                 // 3. تمرير كل رقم للبطاقة الخاصة فيه باستخدام الخاصية Value
@@ -37,7 +37,7 @@ namespace SmartDentalClinic.Admin.DashBoard
         }
         private async Task _FillUsersByRoleGrid()
         {
-            DataTable dtUsersByRole = await clsDashboard.GetUsersCountByRoleAsync();
+            DataTable dtUsersByRole = await clsAdminDashboard.GetUsersCountByRoleAsync();
 
             dgvUsersByRole.DataSource = dtUsersByRole;
             if (dgvUsersByRole.Columns.Count > 0)

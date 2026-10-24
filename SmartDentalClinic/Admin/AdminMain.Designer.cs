@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.pnlContainer = new System.Windows.Forms.Panel();
             this.asdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appointmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,7 +38,7 @@
             this.treatmentPlansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoicesPaymentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlContainer = new System.Windows.Forms.Panel();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +53,8 @@
             this.visitNotesToolStripMenuItem,
             this.treatmentPlansToolStripMenuItem,
             this.usersRolesToolStripMenuItem,
-            this.invoicesPaymentsToolStripMenuItem});
+            this.invoicesPaymentsToolStripMenuItem,
+            this.logoutToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -60,6 +62,14 @@
             this.menuStrip1.Size = new System.Drawing.Size(210, 749);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // pnlContainer
+            // 
+            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContainer.Location = new System.Drawing.Point(210, 0);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(1160, 749);
+            this.pnlContainer.TabIndex = 2;
             // 
             // asdToolStripMenuItem
             // 
@@ -149,13 +159,18 @@
             this.invoicesPaymentsToolStripMenuItem.Size = new System.Drawing.Size(197, 28);
             this.invoicesPaymentsToolStripMenuItem.Text = "   Invoices && Payments";
             // 
-            // pnlContainer
+            // logoutToolStripMenuItem
             // 
-            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContainer.Location = new System.Drawing.Point(210, 0);
-            this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1160, 749);
-            this.pnlContainer.TabIndex = 2;
+            this.logoutToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.logoutToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.logoutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logoutToolStripMenuItem.Image")));
+            this.logoutToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.logoutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.logoutToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 150, 0, 0);
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(197, 28);
+            this.logoutToolStripMenuItem.Text = "   Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // AdminMain
             // 
@@ -190,6 +205,7 @@
         private System.Windows.Forms.ToolStripMenuItem usersRolesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem invoicesPaymentsToolStripMenuItem;
         private System.Windows.Forms.Panel pnlContainer;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
 
