@@ -103,10 +103,30 @@ namespace SmartDentalClinic.Admin.AddNewUser
             frmAddUpdateUser.ShowDialog();
         }
 
-        private void ctrlFindPersonInfoFilter1_OnPersonSelected(object sender, People.Controls.ctrlFindPersonInfoFilter.DataBackEventArgs e)
+        private async void ctrlFindPersonInfoFilter1_OnPersonSelected(object sender, People.Controls.ctrlFindPersonInfoFilter.DataBackEventArgs e)
         {
             txtFullName.Text = e.FullName;
             lblPersonID.Text = e.PersonID.ToString();
+
+            try
+            {
+                string userName = await clsUsers.GetUserNameByPersonIDAsync(e.PersonID);
+
+                if (userName == null)
+                {
+                    // Person doesn't have an account.
+                    MessageBox.Show("This person does not have an account yet. You can create one.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Person already has an account.
+                    MessageBox.Show($"This person already has an account with the username: \n.:[ {userName} ]:.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occurred while checking the user account.");
+            }
         }
         private async Task<bool> _CreateUserAsync()
         {
@@ -156,9 +176,20 @@ namespace SmartDentalClinic.Admin.AddNewUser
             }
         }
 
-        private void HandlingNullValues(object sender, CancelEventArgs e)
+        private async void HandlingNullValues(object sender, CancelEventArgs e)
         {
             TextBox txt = sender as TextBox;
+
+            if (txt == txtUserName)
+            {
+                if (await clsUsers.IsUserExistByUserNameAsync(txtUserName.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtUserName, "This username already exists. Please choose another one.");
+                    return;
+                }
+            }
+
             if (string.IsNullOrWhiteSpace(txt.Text))
             {
                 e.Cancel = true;

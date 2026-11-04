@@ -16,6 +16,7 @@ namespace SmartDentalClinic.Admin.People.Controls
         public ctrlFindPersonInfoFilter()
         {
             InitializeComponent();
+            cbSearchPerson.SelectedItem = "Person ID"; // Set default selection to "Person ID"
         }
         private clsPeople _Person;
 

@@ -57,48 +57,51 @@ namespace SmartDentalClinic.Business
 
             return user;
         }
-        private static string GetHashPassowrdValue(string Passowrd)
+        private static string GetHashPasswordValue(string Passowrd)
         {
             return clsBusinessUtil.ComputeHash(Passowrd);
         }
 
         private async Task<bool> _AddNewUser()
         {
-            this.Password = GetHashPassowrdValue(this.Password);
-            this.UserID = await clsUsersData.AddNewUserAsync
-                (
-                this.PersonID,
-                this.UserName,
-                this.Password,
-                this.RoleID,
-                this.IsActive
-                );
+            string hashedPassword = GetHashPasswordValue(this.Password);
+            UserDTO user = new UserDTO
+            {
+                PersonID = this.PersonID,
+                UserName = this.UserName,
+                Password = hashedPassword,
+                RoleID = this.RoleID,
+                IsActive = this.IsActive
+            };
 
+            this.UserID = await clsUsersData.AddNewUserAsync(user);
             return (this.UserID != -1);
         }
         private async Task<bool> _UpdateUser()
         {
-            string PasswordToSave = this.Password;
+            string passwordToSave  = this.Password;
             //Check if the password has been changed, if yes then hash it before saving
             if (this.Password != _OriginalPasswordHash)
             {
-                PasswordToSave = GetHashPassowrdValue(this.Password);
+                passwordToSave  = GetHashPasswordValue(this.Password);
             }
 
-            bool IsUpdated = await clsUsersData.UpdateUserAsync
-                (
-                this.UserID,
-                this.PersonID,
-                this.UserName,
-                PasswordToSave,
-                this.RoleID,
-                this.IsActive
-                );
+            UserDTO user = new UserDTO
+            {
+                UserID = this.UserID,
+                PersonID = this.PersonID,
+                UserName = this.UserName,
+                Password = passwordToSave ,
+                RoleID = this.RoleID,
+                IsActive = this.IsActive
+            };
+
+            bool IsUpdated = await clsUsersData.UpdateUserAsync(user);
 
             if (IsUpdated)
             {
-                this.Password = PasswordToSave;
-                _OriginalPasswordHash = PasswordToSave;
+                this.Password = passwordToSave ;
+                _OriginalPasswordHash = passwordToSave ;
             }
             return IsUpdated;
         }
@@ -153,7 +156,7 @@ namespace SmartDentalClinic.Business
 
         public static async Task<clsUsers> FindByUsernameAndPasswordAsync(string userName, string password)
         {
-            password = GetHashPassowrdValue(password);
+            password = GetHashPasswordValue(password);
             return await _ExecuteFindAsync(() => clsUsersData.GetUserInfoByUserNameAndPasswordAsync(userName, password));
         }
 
@@ -172,7 +175,7 @@ namespace SmartDentalClinic.Business
 
         public async Task<bool> UpdatePasswordAsync(string NewPassword)
         {
-            string HashedPassword = GetHashPassowrdValue(NewPassword);
+            string HashedPassword = GetHashPasswordValue(NewPassword);
 
             bool IsUpdated = await clsUsersData.UpdatePasswordAsync(this.UserID, HashedPassword);
             if (IsUpdated)
@@ -190,6 +193,11 @@ namespace SmartDentalClinic.Business
         public static async Task<bool> DeactivateUserAsync(string UserName)
         {
             return await clsUsersData.ChangeUserStatusAsync(UserName, false);
+        }
+
+        public static async Task<string> GetUserNameByPersonIDAsync(int personID)
+        {
+            return await clsUsersData.GetUserNameByPersonIDAsync(personID);
         }
         public static async Task<DataTable> GetAllUsersListAsync()
         {

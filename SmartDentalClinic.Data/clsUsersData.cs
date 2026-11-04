@@ -25,9 +25,7 @@ namespace SmartDentalClinic.Data
             clsDataAccessSettings.ErrorFormating(FuncName, ErrorMessage, "clsUsersData");
         }
 
-        public static async Task<int> AddNewUserAsync(int PersonID, string UserName,
-                                     string Password, int RoleID,
-                                     bool IsActive)
+        public static async Task<int> AddNewUserAsync(UserDTO user)
         {
             int UserID = -1;
 
@@ -37,11 +35,11 @@ namespace SmartDentalClinic.Data
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
-                    command.Parameters.AddWithValue("@UserName", UserName);
-                    command.Parameters.AddWithValue("@Password", Password);
-                    command.Parameters.AddWithValue("@RoleID", RoleID);
-                    command.Parameters.AddWithValue("@IsActive", IsActive);
+                    command.Parameters.AddWithValue("@PersonID", user.PersonID);
+                    command.Parameters.AddWithValue("@UserName", user.UserName);
+                    command.Parameters.AddWithValue("@Password", user.Password);
+                    command.Parameters.AddWithValue("@RoleID", user.RoleID);
+                    command.Parameters.AddWithValue("@IsActive", user.IsActive);
 
                     SqlParameter outputIDparam = new SqlParameter("@UserID", SqlDbType.Int)
                     {
@@ -62,9 +60,7 @@ namespace SmartDentalClinic.Data
             }
             return UserID;
         }
-        public static async Task<bool> UpdateUserAsync(int UserID, int PersonID,
-                                      string UserName, string Password,
-                                      int RoleID, bool IsActive)
+        public static async Task<bool> UpdateUserAsync(UserDTO user)
         {
             int RowsAffected = 0;
 
@@ -74,12 +70,12 @@ namespace SmartDentalClinic.Data
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("@UserID", UserID);
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
-                    command.Parameters.AddWithValue("@UserName", UserName);
-                    command.Parameters.AddWithValue("@Password", Password);
-                    command.Parameters.AddWithValue("@RoleID", RoleID);
-                    command.Parameters.AddWithValue("@IsActive", IsActive);
+                    command.Parameters.AddWithValue("@UserID", user.UserID);
+                    command.Parameters.AddWithValue("@PersonID", user.PersonID);
+                    command.Parameters.AddWithValue("@UserName", user.UserName);
+                    command.Parameters.AddWithValue("@Password", user.Password);
+                    command.Parameters.AddWithValue("@RoleID", user.RoleID);
+                    command.Parameters.AddWithValue("@IsActive", user.IsActive);
 
                     try
                     {
@@ -387,6 +383,35 @@ namespace SmartDentalClinic.Data
                 }
             }
             return (RowsAffected > 0);
+        }
+
+        public static async Task<string> GetUserNameByPersonIDAsync(int personID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SP_Users_GetUserNameByPersonID", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@PersonID", SqlDbType.Int).Value = personID;
+
+                    try
+                    {
+                        await connection.OpenAsync();
+
+                        object result = await command.ExecuteScalarAsync();
+
+                        if (result == null || result == DBNull.Value)
+                            return null;
+
+                        return Convert.ToString(result);
+                    }
+                    catch (Exception ex)
+                    {
+                        LocalLogError(nameof(GetUserNameByPersonIDAsync), ex.Message);
+                        throw;
+                    }
+                }
+            }
         }
 
         public static async Task<DataTable> GetAllUsersAsync()
