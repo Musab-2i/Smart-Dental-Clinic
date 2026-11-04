@@ -20,7 +20,6 @@ namespace SmartDentalClinic.Receptionist.DashBoard
         private void frmReceptionistDashBoard_Load(object sender, EventArgs e)
         {
             ctrlDashboardHeader1.LoadData();
-
         }
     }
 }

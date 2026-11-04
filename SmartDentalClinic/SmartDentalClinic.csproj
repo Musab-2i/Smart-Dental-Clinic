@@ -191,6 +191,10 @@
       <Project>{8f4e37cd-adcf-4f4b-8b17-d59a7d14b866}</Project>
       <Name>SmartDentalClinic.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SmartDentalClinic.DTOs\SmartDentalClinic.DTOs.csproj">
+      <Project>{8371a77f-262c-41e6-99ac-4f685d0403ee}</Project>
+      <Name>SmartDentalClinic.DTOs</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home.png" />

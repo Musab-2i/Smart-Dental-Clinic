@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDentalClinic.Business"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDentalClinic.Data", "..\SmartDentalClinic.Data\SmartDentalClinic.Data.csproj", "{A73A9738-D4D0-4DEE-8226-A3F532BDA5F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDentalClinic.DTOs", "..\SmartDentalClinic.DTOs\SmartDentalClinic.DTOs.csproj", "{8371A77F-262C-41E6-99AC-4F685D0403EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A73A9738-D4D0-4DEE-8226-A3F532BDA5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A73A9738-D4D0-4DEE-8226-A3F532BDA5F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A73A9738-D4D0-4DEE-8226-A3F532BDA5F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8371A77F-262C-41E6-99AC-4F685D0403EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8371A77F-262C-41E6-99AC-4F685D0403EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8371A77F-262C-41E6-99AC-4F685D0403EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8371A77F-262C-41E6-99AC-4F685D0403EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

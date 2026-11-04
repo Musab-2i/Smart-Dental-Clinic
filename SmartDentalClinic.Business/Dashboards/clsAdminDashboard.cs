@@ -1,4 +1,5 @@
 ﻿using SmartDentalClinic.Data;
+using SmartDentalClinic.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -34,7 +35,7 @@ namespace SmartDentalClinic.Business
             return new clsAdminDashboard(dto);
         }
 
-        public static async Task<DataTable> GetUsersCountByRoleAsync()
+        public static async Task<List<RoleUserCountDTO>> GetUsersCountByRoleAsync()
         {
             return await clsAdminDashboardData.GetUsersCountByRoleAsync();
         }

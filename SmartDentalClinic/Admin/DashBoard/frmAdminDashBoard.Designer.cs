@@ -28,65 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvUsersByRole = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ctrlDashboardHeader1 = new SmartDentalClinic.GlobalUserControls.ctrlDashboardHeader();
             this.cardQuickAccessBilling = new SmartDentalClinic.Admin.Controls.ctrlQuickAccessCard();
             this.cardQuickAccessAppointments = new SmartDentalClinic.Admin.Controls.ctrlQuickAccessCard();
             this.cardQuickAccessManageUsers = new SmartDentalClinic.Admin.Controls.ctrlQuickAccessCard();
+            this.ctrlDashboardHeader1 = new SmartDentalClinic.GlobalUserControls.ctrlDashboardHeader();
             this.cardInvoices = new SmartDentalClinic.Admin.DashBoard.Controls.ctrlDashboardCard();
             this.cardAppointments = new SmartDentalClinic.Admin.DashBoard.Controls.ctrlDashboardCard();
             this.cardPatients = new SmartDentalClinic.Admin.DashBoard.Controls.ctrlDashboardCard();
             this.cardActiveUsers = new SmartDentalClinic.Admin.DashBoard.Controls.ctrlDashboardCard();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsersByRole)).BeginInit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.flpUsersByRole = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgvUsersByRole);
-            this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.groupBox1.Location = new System.Drawing.Point(24, 354);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(747, 495);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Users By Role";
-            // 
-            // dgvUsersByRole
-            // 
-            this.dgvUsersByRole.AllowUserToAddRows = false;
-            this.dgvUsersByRole.AllowUserToDeleteRows = false;
-            this.dgvUsersByRole.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvUsersByRole.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvUsersByRole.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvUsersByRole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsersByRole.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvUsersByRole.Location = new System.Drawing.Point(8, 53);
-            this.dgvUsersByRole.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvUsersByRole.Name = "dgvUsersByRole";
-            this.dgvUsersByRole.ReadOnly = true;
-            this.dgvUsersByRole.RowHeadersWidth = 51;
-            this.dgvUsersByRole.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsersByRole.Size = new System.Drawing.Size(731, 417);
-            this.dgvUsersByRole.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -102,15 +57,6 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Quick Access";
-            // 
-            // ctrlDashboardHeader1
-            // 
-            this.ctrlDashboardHeader1.DescriptionText = "Here\'s what\'s happening at your clinic today.";
-            this.ctrlDashboardHeader1.Location = new System.Drawing.Point(32, 12);
-            this.ctrlDashboardHeader1.MotivationText = "Have a great day at the clinic!";
-            this.ctrlDashboardHeader1.Name = "ctrlDashboardHeader1";
-            this.ctrlDashboardHeader1.Size = new System.Drawing.Size(1603, 150);
-            this.ctrlDashboardHeader1.TabIndex = 8;
             // 
             // cardQuickAccessBilling
             // 
@@ -150,6 +96,15 @@
             this.cardQuickAccessManageUsers.TabIndex = 1;
             this.cardQuickAccessManageUsers.Title = "Manage Users";
             this.cardQuickAccessManageUsers.Click += new System.EventHandler(this.cardQuickAccessManageUsers_Click);
+            // 
+            // ctrlDashboardHeader1
+            // 
+            this.ctrlDashboardHeader1.DescriptionText = "Here\'s what\'s happening at your clinic today.";
+            this.ctrlDashboardHeader1.Location = new System.Drawing.Point(32, 12);
+            this.ctrlDashboardHeader1.MotivationText = "Have a great day at the clinic!";
+            this.ctrlDashboardHeader1.Name = "ctrlDashboardHeader1";
+            this.ctrlDashboardHeader1.Size = new System.Drawing.Size(1603, 150);
+            this.ctrlDashboardHeader1.TabIndex = 8;
             // 
             // cardInvoices
             // 
@@ -199,6 +154,29 @@
             this.cardActiveUsers.Title = "Active Users";
             this.cardActiveUsers.Value = "Value";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.flpUsersByRole);
+            this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.groupBox1.Location = new System.Drawing.Point(24, 354);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(747, 495);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Users By Role";
+            // 
+            // flpUsersByRole
+            // 
+            this.flpUsersByRole.AutoScroll = true;
+            this.flpUsersByRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpUsersByRole.Location = new System.Drawing.Point(4, 23);
+            this.flpUsersByRole.Name = "flpUsersByRole";
+            this.flpUsersByRole.Padding = new System.Windows.Forms.Padding(10);
+            this.flpUsersByRole.Size = new System.Drawing.Size(739, 468);
+            this.flpUsersByRole.TabIndex = 0;
+            // 
             // frmAdminDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -216,9 +194,8 @@
             this.Name = "frmAdminDashBoard";
             this.Text = "frmDashBoard";
             this.Load += new System.EventHandler(this.frmDashBoard_Load);
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsersByRole)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -228,12 +205,12 @@
         private Controls.ctrlDashboardCard cardPatients;
         private Controls.ctrlDashboardCard cardAppointments;
         private Controls.ctrlDashboardCard cardInvoices;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvUsersByRole;
         private System.Windows.Forms.GroupBox groupBox2;
         private Admin.Controls.ctrlQuickAccessCard cardQuickAccessManageUsers;
         private Admin.Controls.ctrlQuickAccessCard cardQuickAccessBilling;
         private Admin.Controls.ctrlQuickAccessCard cardQuickAccessAppointments;
         private GlobalUserControls.ctrlDashboardHeader ctrlDashboardHeader1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.FlowLayoutPanel flpUsersByRole;
     }
 }

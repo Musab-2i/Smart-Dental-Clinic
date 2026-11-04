@@ -1,6 +1,7 @@
 ﻿using SmartDentalClinic.Admin.AddNewUser;
 using SmartDentalClinic.Admin.Controls;
 using SmartDentalClinic.Business;
+using SmartDentalClinic.DTOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,20 +36,6 @@ namespace SmartDentalClinic.Admin.DashBoard
                 cardInvoices.Value = dashboardSummary.UnpaidInvoices.ToString();
             }
         }
-        private async Task _FillUsersByRoleGrid()
-        {
-            DataTable dtUsersByRole = await clsAdminDashboard.GetUsersCountByRoleAsync();
-
-            dgvUsersByRole.DataSource = dtUsersByRole;
-            if (dgvUsersByRole.Columns.Count > 0)
-            {
-                dgvUsersByRole.Columns["Role"].HeaderText = "Role";
-                dgvUsersByRole.Columns["Role"].Width = 350;
-
-                dgvUsersByRole.Columns["UserCount"].HeaderText = "User Count";
-                dgvUsersByRole.Columns["UserCount"].Width = 155;
-            }
-        }
         private void BindCardToForm(ctrlQuickAccessCard card, Func<Form> formFactory)
         {
             card.OnCardClicked = () =>
@@ -67,9 +54,20 @@ namespace SmartDentalClinic.Admin.DashBoard
         private async void frmDashBoard_Load(object sender, EventArgs e)
         {
             await _FillUserCtrl();
-            await _FillUsersByRoleGrid();
             BindCardToForm(cardQuickAccessManageUsers, () => new frmAddUpdateUser());
             ctrlDashboardHeader1.LoadData();
+
+            flpUsersByRole.Controls.Clear();
+
+            List<RoleUserCountDTO> roles = await clsAdminDashboard.GetUsersCountByRoleAsync();
+
+            foreach(RoleUserCountDTO roleUser in roles)
+            {
+                flpUsersByRole.Controls.Add(
+                    CreateRoleCard(roleUser.RoleName, roleUser.UserCount)
+                );
+            }
+
         }
 
         //Delete This Method if you don't want to use it, it's just an example of how to use the card click event
@@ -80,6 +78,58 @@ namespace SmartDentalClinic.Admin.DashBoard
 
             //// بطاقة الفواتير (كمثال)
             //cardQuickAccessBilling.OnCardClicked = () => adminMain.openChildForm(new frmBilling());
+        }
+
+
+
+        private Panel CreateRoleCard(string roleName, int userCount)
+        {
+            // Create the Card
+            Panel pnlCard = new Panel();
+
+            pnlCard.Size = new Size(200, 140);
+            pnlCard.BackColor = Color.White;
+            pnlCard.Margin = new Padding(10);
+            pnlCard.BorderStyle = BorderStyle.FixedSingle;
+
+            // Create Role Name Label
+            Label lblRoleName = new Label();
+
+            lblRoleName.Text = roleName;
+            lblRoleName.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            lblRoleName.ForeColor = Color.FromArgb(0, 139, 139);
+
+            lblRoleName.Location = new Point(10, 20);
+            lblRoleName.Size = new Size(180, 30);
+            lblRoleName.TextAlign = ContentAlignment.MiddleCenter;
+
+            // Create User Count Label
+            Label lblUserCount = new Label();
+
+            lblUserCount.Text = userCount.ToString();
+            lblUserCount.Font = new Font("Segoe UI", 22, FontStyle.Bold);
+            lblUserCount.ForeColor = Color.FromArgb(0, 139, 139);
+
+            lblUserCount.Location = new Point(10, 60);
+            lblUserCount.Size = new Size(180, 45);
+            lblUserCount.TextAlign = ContentAlignment.MiddleCenter;
+
+            Label lblDescription = new Label();
+
+            lblDescription.Text = "Users";
+            lblDescription.Font = new Font("Segoe UI", 9);
+            lblDescription.ForeColor = Color.Gray;
+
+            lblDescription.Location = new Point(10, 105);
+            lblDescription.Size = new Size(180, 20);
+            lblDescription.TextAlign = ContentAlignment.MiddleCenter;
+
+            // Add Controls to Panel
+            pnlCard.Controls.Add(lblRoleName);
+            pnlCard.Controls.Add(lblUserCount);
+            pnlCard.Controls.Add(lblDescription);
+
+            return pnlCard;
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SmartDentalClinic.DTOs;
+using System.Collections.Generic;
 
 namespace SmartDentalClinic.Data
 {
@@ -57,9 +59,9 @@ namespace SmartDentalClinic.Data
             return null; // نرجع Null في حال عدم العثور على بيانات أو حدوث خطأ
         }
 
-        public static async Task<DataTable> GetUsersCountByRoleAsync()
+        public static async Task<List<RoleUserCountDTO>> GetUsersCountByRoleAsync()
         {
-            DataTable dt = new DataTable();
+            List<RoleUserCountDTO> roles = new List<RoleUserCountDTO>();
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
@@ -72,9 +74,14 @@ namespace SmartDentalClinic.Data
                         await connection.OpenAsync();
                         using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
-                            if (reader.HasRows)
+                            while (await reader.ReadAsync())
                             {
-                                dt.Load(reader);
+                                RoleUserCountDTO role = new RoleUserCountDTO
+                                {
+                                    RoleName = reader["Role"].ToString(),
+                                    UserCount = Convert.ToInt32(reader["UserCount"])
+                                };
+                                roles.Add(role);
                             }
                         }
                     }
@@ -84,7 +91,7 @@ namespace SmartDentalClinic.Data
                     }
                 }
             }
-            return dt;
+            return roles;
         }
     }
 }
