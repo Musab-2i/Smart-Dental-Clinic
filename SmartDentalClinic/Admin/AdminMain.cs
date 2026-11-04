@@ -18,7 +18,7 @@ namespace SmartDentalClinic
         public AdminMain()
         {
             InitializeComponent();
-            openChildForm(new frmDashBoard());
+            openChildForm(new frmAdminDashBoard());
             asdToolStripMenuItem.PerformClick();
         }
         private void ResetMenuColors()
@@ -34,7 +34,7 @@ namespace SmartDentalClinic
             ResetMenuColors();
             asdToolStripMenuItem.BackColor = ColorTranslator.FromHtml("#E9EEF6");
             asdToolStripMenuItem.ForeColor = Color.Teal;
-            openChildForm(new frmDashBoard());
+            openChildForm(new frmAdminDashBoard());
         }
 
         private void usersRolesToolStripMenuItem_Click(object sender, EventArgs e)

@@ -70,11 +70,11 @@
     <Compile Include="Admin\DashBoard\Controls\ctrlDashboardCard.Designer.cs">
       <DependentUpon>ctrlDashboardCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\DashBoard\frmDashBoard.cs">
+    <Compile Include="Admin\DashBoard\frmAdminDashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\DashBoard\frmDashBoard.Designer.cs">
-      <DependentUpon>frmDashBoard.cs</DependentUpon>
+    <Compile Include="Admin\DashBoard\frmAdminDashBoard.Designer.cs">
+      <DependentUpon>frmAdminDashBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\People\Controls\ctrlFindPersonInfoFilter.cs">
       <SubType>UserControl</SubType>
@@ -101,6 +101,12 @@
     <Compile Include="GlobalClass\clsRegistry.cs" />
     <Compile Include="GlobalClass\clsUtil.cs" />
     <Compile Include="GlobalClass\clsValidations.cs" />
+    <Compile Include="GlobalUserControls\ctrlDashboardHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GlobalUserControls\ctrlDashboardHeader.Designer.cs">
+      <DependentUpon>ctrlDashboardHeader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receptionist\DashBoard\frmReceptionistDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Receptionist\DashBoard\frmReceptionistDashBoard.Designer.cs">
+      <DependentUpon>frmReceptionistDashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Receptionist\frmReceptionistMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,8 +139,8 @@
     <EmbeddedResource Include="Admin\DashBoard\Controls\ctrlDashboardCard.resx">
       <DependentUpon>ctrlDashboardCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\DashBoard\frmDashBoard.resx">
-      <DependentUpon>frmDashBoard.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\DashBoard\frmAdminDashBoard.resx">
+      <DependentUpon>frmAdminDashBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\People\Controls\ctrlFindPersonInfoFilter.resx">
       <DependentUpon>ctrlFindPersonInfoFilter.cs</DependentUpon>
@@ -138,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\People\frmAddUpdatePerson.resx">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GlobalUserControls\ctrlDashboardHeader.resx">
+      <DependentUpon>ctrlDashboardHeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -152,6 +167,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Receptionist\DashBoard\frmReceptionistDashBoard.resx">
+      <DependentUpon>frmReceptionistDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Receptionist\frmReceptionistMain.resx">
       <DependentUpon>frmReceptionistMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,6 +302,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logout1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manSmallUserCard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\womanSmallUserCard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\userRole.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

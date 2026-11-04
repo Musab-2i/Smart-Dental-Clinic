@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace SmartDentalClinic.Admin.DashBoard
 {
-    public partial class frmDashBoard : Form
+    public partial class frmAdminDashBoard : Form
     {
-        public frmDashBoard()
+        public frmAdminDashBoard()
         {
             InitializeComponent();
         }
@@ -69,6 +69,7 @@ namespace SmartDentalClinic.Admin.DashBoard
             await _FillUserCtrl();
             await _FillUsersByRoleGrid();
             BindCardToForm(cardQuickAccessManageUsers, () => new frmAddUpdateUser());
+            ctrlDashboardHeader1.LoadData();
         }
 
         //Delete This Method if you don't want to use it, it's just an example of how to use the card click event

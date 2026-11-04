@@ -16,5 +16,17 @@ namespace SmartDentalClinic.GlobalClass
         {
             return Fees.ToString("F2");
         }
+        public static string GetGreeting()
+        {
+            int hour = DateTime.Now.Hour;
+
+            if (hour < 12)
+                return "Good Morning";
+
+            if (hour < 17)
+                return "Good Afternoon";
+
+            return "Good Evening";
+        }
     }
 }
