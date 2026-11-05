@@ -19,30 +19,22 @@ namespace SmartDentalClinic
         {
             InitializeComponent();
             openChildForm(new frmAdminDashBoard());
+
+            foreach(ToolStripMenuItem item in menuStrip1.Items)
+            {
+                item.Click += clsFormat.MenuItem_Click;
+            }
             asdToolStripMenuItem.PerformClick();
         }
-        private void ResetMenuColors()
-        {
-            // إعادة الألوان للوضع الافتراضي
-            asdToolStripMenuItem.BackColor = Color.Transparent;
-            asdToolStripMenuItem.ForeColor = Color.WhiteSmoke;
-            usersRolesToolStripMenuItem.BackColor = Color.Transparent;
-            usersRolesToolStripMenuItem.ForeColor = Color.WhiteSmoke;
-        }
+
+
         private void asdToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ResetMenuColors();
-            asdToolStripMenuItem.BackColor = ColorTranslator.FromHtml("#E9EEF6");
-            asdToolStripMenuItem.ForeColor = Color.Teal;
             openChildForm(new frmAdminDashBoard());
         }
 
         private void usersRolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ResetMenuColors();
-            usersRolesToolStripMenuItem.BackColor = ColorTranslator.FromHtml("#E9EEF6");
-            usersRolesToolStripMenuItem.ForeColor = Color.Teal;
-
             openChildForm(new frmAddUpdateUser());
         }
         private Form activeForm = null;

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SmartDentalClinic.DTOs;
+using SmartDentalClinic.Data;
 
 namespace SmartDentalClinic.Business.Dashboards
 {
@@ -30,6 +32,9 @@ namespace SmartDentalClinic.Business.Dashboards
 
             return new clsReceptionistDashboard(dto);
         }
-
+        public static async Task<List<UpcomingAppointmentDTO>> GetTodaysAppointmentsAsync()
+        {
+            return await clsAppointmentsData.GetUpcomingAppointmentsAsync();
+        }
     }
 }

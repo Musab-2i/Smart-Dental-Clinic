@@ -171,11 +171,13 @@
             // 
             this.flpUsersByRole.AutoScroll = true;
             this.flpUsersByRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpUsersByRole.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpUsersByRole.Location = new System.Drawing.Point(4, 23);
             this.flpUsersByRole.Name = "flpUsersByRole";
             this.flpUsersByRole.Padding = new System.Windows.Forms.Padding(10);
             this.flpUsersByRole.Size = new System.Drawing.Size(739, 468);
             this.flpUsersByRole.TabIndex = 0;
+            this.flpUsersByRole.WrapContents = false;
             // 
             // frmAdminDashBoard
             // 

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartDentalClinic.DTOs;
-using System.Collections.Generic;
 
 namespace SmartDentalClinic.Data
 {

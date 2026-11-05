@@ -80,51 +80,56 @@ namespace SmartDentalClinic.Admin.DashBoard
             //cardQuickAccessBilling.OnCardClicked = () => adminMain.openChildForm(new frmBilling());
         }
 
-
-
         private Panel CreateRoleCard(string roleName, int userCount)
         {
-            // Create the Card
+            // Create Card
             Panel pnlCard = new Panel();
 
-            pnlCard.Size = new Size(200, 140);
+            pnlCard.Size = new Size(500, 110);
             pnlCard.BackColor = Color.White;
-            pnlCard.Margin = new Padding(10);
+            pnlCard.Margin = new Padding(7);
             pnlCard.BorderStyle = BorderStyle.FixedSingle;
 
-            // Create Role Name Label
+            // Accent Bar
+            Panel pnlAccent = new Panel();
+
+            pnlAccent.Size = new Size(5, 108);
+            pnlAccent.Location = new Point(0, 0);
+            pnlAccent.BackColor = Color.Teal;
+
+            // Role Name
             Label lblRoleName = new Label();
 
             lblRoleName.Text = roleName;
             lblRoleName.Font = new Font("Segoe UI", 11, FontStyle.Bold);
-            lblRoleName.ForeColor = Color.FromArgb(0, 139, 139);
-
-            lblRoleName.Location = new Point(10, 20);
-            lblRoleName.Size = new Size(180, 30);
+            lblRoleName.ForeColor = Color.FromArgb(45, 55, 72);
+            lblRoleName.Location = new Point(15, 8);
+            lblRoleName.Size = new Size(475, 25);
             lblRoleName.TextAlign = ContentAlignment.MiddleCenter;
+            lblRoleName.AutoEllipsis = true;
 
-            // Create User Count Label
+            // User Count
             Label lblUserCount = new Label();
 
             lblUserCount.Text = userCount.ToString();
-            lblUserCount.Font = new Font("Segoe UI", 22, FontStyle.Bold);
-            lblUserCount.ForeColor = Color.FromArgb(0, 139, 139);
-
-            lblUserCount.Location = new Point(10, 60);
-            lblUserCount.Size = new Size(180, 45);
+            lblUserCount.Font = new Font("Segoe UI", 24, FontStyle.Bold);
+            lblUserCount.ForeColor = Color.Teal;
+            lblUserCount.Location = new Point(15, 32);
+            lblUserCount.Size = new Size(475, 45);
             lblUserCount.TextAlign = ContentAlignment.MiddleCenter;
 
+            // Description
             Label lblDescription = new Label();
 
-            lblDescription.Text = "Users";
+            lblDescription.Text = "Total Users";
             lblDescription.Font = new Font("Segoe UI", 9);
             lblDescription.ForeColor = Color.Gray;
-
-            lblDescription.Location = new Point(10, 105);
-            lblDescription.Size = new Size(180, 20);
+            lblDescription.Location = new Point(15, 78);
+            lblDescription.Size = new Size(475, 20);
             lblDescription.TextAlign = ContentAlignment.MiddleCenter;
 
-            // Add Controls to Panel
+            // Add Controls
+            pnlCard.Controls.Add(pnlAccent);
             pnlCard.Controls.Add(lblRoleName);
             pnlCard.Controls.Add(lblUserCount);
             pnlCard.Controls.Add(lblDescription);

@@ -1,12 +1,15 @@
-﻿using System;
+﻿using SmartDentalClinic.Admin.DashBoard;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SmartDentalClinic.GlobalClass
 {
-    public class clsFormat
+    public static class clsFormat
     {
         public static string DateToShort(DateTime Dt1)
         {
@@ -27,6 +30,29 @@ namespace SmartDentalClinic.GlobalClass
                 return "Good Afternoon";
 
             return "Good Evening";
+        }
+
+        public static void MenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem clickedItem = sender as ToolStripMenuItem;
+
+            if (clickedItem == null)
+                return;
+
+            // الوصول إلى MenuStrip الذي يحتوي على العنصر
+            ToolStrip menu = clickedItem.Owner;
+
+            // إعادة جميع العناصر للوضع الافتراضي
+            foreach (ToolStripItem item in menu.Items)
+            {
+                item.BackColor = Color.Transparent;
+                item.ForeColor = Color.WhiteSmoke;
+            }
+
+            // تمييز العنصر الذي تم الضغط عليه
+            //clickedItem.BackColor = ColorTranslator.FromHtml("#E9EEF6");
+            clickedItem.BackColor = Color.LightBlue;
+            clickedItem.ForeColor = Color.Teal;
         }
     }
 }
