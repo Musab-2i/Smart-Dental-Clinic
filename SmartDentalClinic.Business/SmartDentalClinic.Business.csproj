@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsBusinessUtil.cs" />
     <Compile Include="clsCountries.cs" />
+    <Compile Include="clsPatients.cs" />
     <Compile Include="Dashboards\clsAdminDashboard.cs" />
     <Compile Include="clsPeople.cs" />
     <Compile Include="clsRoles.cs" />

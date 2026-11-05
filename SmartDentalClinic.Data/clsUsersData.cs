@@ -6,19 +6,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using SmartDentalClinic.DTOs;
 
 namespace SmartDentalClinic.Data
 {
-    public class UserDTO
-    {
-        public int UserID { get; set; }
-        public int PersonID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public int RoleID { get; set; }
-        public bool IsActive { get; set; }
-    }
-    static public class clsUsersData
+    public static class clsUsersData
     {
         private static void LocalLogError(string FuncName, string ErrorMessage)
         {

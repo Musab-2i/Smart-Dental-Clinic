@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="clsAppointmentsData.cs" />
     <Compile Include="clsCountriesData.cs" />
+    <Compile Include="clsPatientsData.cs" />
     <Compile Include="Dashboards\clsAdminDashboardData.cs" />
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsPeopleData.cs" />

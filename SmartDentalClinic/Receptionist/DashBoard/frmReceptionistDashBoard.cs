@@ -67,8 +67,7 @@ namespace SmartDentalClinic.Receptionist.DashBoard
                     AppointmentStatus = "Cancelled"
                 }
             };
-        }
-        private async Task _FillUserCtrl()
+        }        private async Task _FillUserCtrl()
         {
             clsReceptionistDashboard dashboardSummary = await clsReceptionistDashboard.GetStatsAsync();
             if (dashboardSummary != null)

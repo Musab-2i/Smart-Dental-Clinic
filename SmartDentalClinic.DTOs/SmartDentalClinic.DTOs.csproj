@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PatientsDTO.cs" />
     <Compile Include="RoleUserCountDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UpcomingAppointmentDTO.cs" />
+    <Compile Include="UserDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
