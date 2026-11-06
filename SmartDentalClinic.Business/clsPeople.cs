@@ -26,9 +26,9 @@ namespace SmartDentalClinic.Business
         public clsCountries CountrInfo;
         public DateTime DateOfBirth { get; set; }
         public byte Gender { get; set; }
-        private enMode Mode = enMode.AddNewPerson;
+        protected enMode Mode = enMode.AddNewPerson;
 
-        enum enMode
+        protected enum enMode
         {
             AddNewPerson = 1,
             UpdatePerson = 2
@@ -54,7 +54,7 @@ namespace SmartDentalClinic.Business
             Gender = 0;
             Mode = enMode.AddNewPerson;
         }
-        private clsPeople(int personID, int nationalCountryID, string nationalID, string firstName, string secondName, string thirdName, string lastName, string address, string phoneNo, string email, string imagePath, DateTime dateOfBirth, byte gender)
+        protected clsPeople(int personID, int nationalCountryID, string nationalID, string firstName, string secondName, string thirdName, string lastName, string address, string phoneNo, string email, string imagePath, DateTime dateOfBirth, byte gender)
         {
             this.PersonID = personID;
             this.NationalCountryID = nationalCountryID;

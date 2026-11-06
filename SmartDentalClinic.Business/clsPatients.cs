@@ -4,7 +4,7 @@ using SmartDentalClinic.DTOs;
 using System;
 using System.Threading.Tasks;
 
-public class clsPatients
+public class clsPatients : clsPeople
 {
     public enum enMode
     {
@@ -18,22 +18,18 @@ public class clsPatients
     public int PatientID { get; set; }
     public bool IsActive { get; set; }
 
-    // Person Information
-    public clsPeople PersonInfo { get; set; }
-
     // Additional Properties
     public int CreatedByUserID { get; set; }
     public DateTime CreatedDate { get; set; }
 
 
-    // Default Constructor
+    // Default Constructor (For Add New)
     public clsPatients()
     {
         PatientID = -1;
         IsActive = true;
 
-        PersonInfo = new clsPeople();
-
+        // الخصائص الموروثة من clsPeople يتم تهيئتها افتراضياً عبر الـ Base Constructor لو وجد، أو تبقيها فارغة
         CreatedByUserID = -1;
         CreatedDate = DateTime.Now;
 
@@ -41,14 +37,27 @@ public class clsPatients
     }
 
 
-    // Private Constructor
-    private clsPatients(PatientsDTO patientDTO, clsPeople personInfo)
+    // Private Constructor (For Update / Find)
+    private clsPatients(PatientsDTO patientDTO)
+        : base(
+            patientDTO.PersonID,
+            patientDTO.NationalCountryID,
+            patientDTO.NationalID,
+            patientDTO.FirstName,
+            patientDTO.SecondName,
+            patientDTO.ThirdName,
+            patientDTO.LastName,
+            patientDTO.Address,
+            patientDTO.PhoneNo,
+            patientDTO.Email,
+            patientDTO.ImagePath,
+            patientDTO.DateOfBirth,
+            patientDTO.Gender
+        )
     {
+        // تعبئة خصائص المريض الخاصة به فقط
         PatientID = patientDTO.PatientID;
         IsActive = patientDTO.IsActive;
-
-        PersonInfo = personInfo;
-
         CreatedByUserID = patientDTO.CreatedByUserID;
         CreatedDate = patientDTO.CreatedDate;
 
@@ -57,14 +66,12 @@ public class clsPatients
 
 
     // Create Patient Object
-    private static async Task<clsPatients> CreateAsync(PatientsDTO patientDTO)
+    private static Task<clsPatients> CreateAsync(PatientsDTO patientDTO)
     {
-        clsPeople personInfo = await clsPeople.FindAsync(patientDTO.PersonID);
+        if (patientDTO == null)
+            return Task.FromResult<clsPatients>(null);
 
-        if (personInfo == null)
-            return null;
-
-        return new clsPatients(patientDTO, personInfo);
+        return Task.FromResult(new clsPatients(patientDTO));
     }
 
 
@@ -73,18 +80,19 @@ public class clsPatients
     {
         PatientsDTO patient = new PatientsDTO
         {
-            NationalID = PersonInfo.NationalID,
-            FirstName = PersonInfo.FirstName,
-            SecondName = PersonInfo.SecondName,
-            ThirdName = PersonInfo.ThirdName,
-            LastName = PersonInfo.LastName,
-            DateOfBirth = PersonInfo.DateOfBirth,
-            Gender = PersonInfo.Gender,
-            Address = PersonInfo.Address,
-            PhoneNo = PersonInfo.PhoneNo,
-            Email = PersonInfo.Email,
-            NationalCountryID = PersonInfo.NationalCountryID,
-            ImagePath = PersonInfo.ImagePath,
+            // استخدام الخصائص الموروثة مباشرة عبر الـ this أو بدونها
+            NationalID = this.NationalID,
+            FirstName = this.FirstName,
+            SecondName = this.SecondName,
+            ThirdName = this.ThirdName,
+            LastName = this.LastName,
+            DateOfBirth = this.DateOfBirth,
+            Gender = this.Gender,
+            Address = this.Address,
+            PhoneNo = this.PhoneNo,
+            Email = this.Email,
+            NationalCountryID = this.NationalCountryID,
+            ImagePath = this.ImagePath,
 
             CreatedByUserID = this.CreatedByUserID
         };
@@ -102,18 +110,18 @@ public class clsPatients
         {
             PatientID = this.PatientID,
 
-            NationalID = PersonInfo.NationalID,
-            FirstName = PersonInfo.FirstName,
-            SecondName = PersonInfo.SecondName,
-            ThirdName = PersonInfo.ThirdName,
-            LastName = PersonInfo.LastName,
-            DateOfBirth = PersonInfo.DateOfBirth,
-            Gender = PersonInfo.Gender,
-            Address = PersonInfo.Address,
-            PhoneNo = PersonInfo.PhoneNo,
-            Email = PersonInfo.Email,
-            NationalCountryID = PersonInfo.NationalCountryID,
-            ImagePath = PersonInfo.ImagePath,
+            NationalID = this.NationalID,
+            FirstName = this.FirstName,
+            SecondName = this.SecondName,
+            ThirdName = this.ThirdName,
+            LastName = this.LastName,
+            DateOfBirth = this.DateOfBirth,
+            Gender = this.Gender,
+            Address = this.Address,
+            PhoneNo = this.PhoneNo,
+            Email = this.Email,
+            NationalCountryID = this.NationalCountryID,
+            ImagePath = this.ImagePath,
 
             IsActive = this.IsActive
         };

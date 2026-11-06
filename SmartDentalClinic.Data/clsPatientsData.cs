@@ -64,14 +64,19 @@ namespace SmartDentalClinic.Data
 
         public static async Task<bool> UpdatePatientAsync(PatientsDTO patient)
         {
-            int RowsAffected = 0;
+            int rowsAffected = 0;
+
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand("SP_Patients_UpdatePatient", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
+                    // معاملات جدول Patients
                     command.Parameters.AddWithValue("@PatientID", patient.PatientID);
+                    command.Parameters.AddWithValue("@IsActive", patient.IsActive);
+
+                    // معاملات جدول People
                     command.Parameters.AddWithValue("@NationalID", patient.NationalID);
                     command.Parameters.AddWithValue("@FirstName", patient.FirstName);
                     command.Parameters.AddWithValue("@SecondName", patient.SecondName);
@@ -88,8 +93,7 @@ namespace SmartDentalClinic.Data
                     try
                     {
                         await connection.OpenAsync();
-                        RowsAffected = await command.ExecuteNonQueryAsync();
-
+                        rowsAffected = await command.ExecuteNonQueryAsync();
                     }
                     catch (Exception ex)
                     {
@@ -98,7 +102,8 @@ namespace SmartDentalClinic.Data
                 }
             }
 
-            return (RowsAffected > 0);
+            // إرجاع True إذا تم التعديل بنجاح
+            return (rowsAffected > 0);
         }
 
         public static async Task<bool> ChangePatientStatusAsync(int patientID, bool IsActive)
@@ -132,15 +137,18 @@ namespace SmartDentalClinic.Data
         public static async Task<PatientsDTO> GetPatientByIDAsync(int patientID)
         {
             PatientsDTO patient = null;
+
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand("SP_Patients_GetPatientByID", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@PatientID", patientID);
+
                     try
                     {
                         await connection.OpenAsync();
+
                         using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
                             if (await reader.ReadAsync())
@@ -161,7 +169,10 @@ namespace SmartDentalClinic.Data
                                     Email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email")),
                                     NationalCountryID = reader.GetInt32(reader.GetOrdinal("NationalCountryID")),
                                     ImagePath = reader.IsDBNull(reader.GetOrdinal("ImagePath")) ? null : reader.GetString(reader.GetOrdinal("ImagePath")),
-                                    IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
+                                    IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
+
+                                    CreatedByUserID = reader.GetInt32(reader.GetOrdinal("CreatedByUserID")),
+                                    CreatedDate = reader.GetDateTime(reader.GetOrdinal("CreatedDate"))
                                 };
                             }
                         }
@@ -172,6 +183,7 @@ namespace SmartDentalClinic.Data
                     }
                 }
             }
+
             return patient;
         }
     }

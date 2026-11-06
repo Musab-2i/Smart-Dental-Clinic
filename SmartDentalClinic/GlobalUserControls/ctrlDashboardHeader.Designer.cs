@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblGreeting = new System.Windows.Forms.Label();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.lblMotivation = new System.Windows.Forms.Label();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblUsername2 = new System.Windows.Forms.Label();
-            this.lblUserRole = new System.Windows.Forms.Label();
-            this.gbDate = new System.Windows.Forms.GroupBox();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pbUserImage = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.gbDate = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblUserRole = new System.Windows.Forms.Label();
+            this.lblUsername2 = new System.Windows.Forms.Label();
+            this.pbUserImage = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.lblMotivation = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.lblGreeting = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gbDate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -73,76 +73,83 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // lblGreeting
+            // label2
             // 
-            this.lblGreeting.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGreeting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblGreeting.Location = new System.Drawing.Point(47, 22);
-            this.lblGreeting.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblGreeting.Name = "lblGreeting";
-            this.lblGreeting.Size = new System.Drawing.Size(302, 39);
-            this.lblGreeting.TabIndex = 1;
-            this.lblGreeting.Text = "Good Afternoon, ";
-            this.lblGreeting.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label2.Location = new System.Drawing.Point(1179, 22);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 112);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "|";
             // 
-            // lblDescription
+            // gbDate
             // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblDescription.Location = new System.Drawing.Point(47, 71);
-            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(446, 23);
-            this.lblDescription.TabIndex = 2;
-            this.lblDescription.Text = "Here\'s what\'s happening at your clinic today.";
+            this.gbDate.Controls.Add(this.label8);
+            this.gbDate.Controls.Add(this.pictureBox3);
+            this.gbDate.Controls.Add(this.lblDate);
+            this.gbDate.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.gbDate.Location = new System.Drawing.Point(1227, 22);
+            this.gbDate.Name = "gbDate";
+            this.gbDate.Size = new System.Drawing.Size(355, 106);
+            this.gbDate.TabIndex = 11;
+            this.gbDate.TabStop = false;
             // 
-            // lblMotivation
+            // label8
             // 
-            this.lblMotivation.AutoSize = true;
-            this.lblMotivation.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMotivation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblMotivation.Location = new System.Drawing.Point(47, 104);
-            this.lblMotivation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMotivation.Name = "lblMotivation";
-            this.lblMotivation.Size = new System.Drawing.Size(301, 23);
-            this.lblMotivation.TabIndex = 3;
-            this.lblMotivation.Text = "Have a great Day at the clinic!";
+            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label8.Location = new System.Drawing.Point(64, 49);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(260, 23);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Today";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // lblUserName
+            // pictureBox3
             // 
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.BackColor = System.Drawing.Color.Transparent;
-            this.lblUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.ForeColor = System.Drawing.Color.DarkCyan;
-            this.lblUserName.Location = new System.Drawing.Point(329, 22);
-            this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(96, 39);
-            this.lblUserName.TabIndex = 4;
-            this.lblUserName.Text = "User";
+            this.pictureBox3.Image = global::SmartDentalClinic.Properties.Resources.calendar1;
+            this.pictureBox3.Location = new System.Drawing.Point(6, 12);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(40, 80);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
             // 
-            // label3
+            // lblDate
             // 
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label3.Location = new System.Drawing.Point(6, 22);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 112);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "|";
+            this.lblDate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblDate.Location = new System.Drawing.Point(64, 22);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(284, 23);
+            this.lblDate.TabIndex = 12;
+            this.lblDate.Text = "Monday, 11/4/2026";
             // 
-            // label4
+            // pictureBox2
             // 
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label4.Location = new System.Drawing.Point(590, 22);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 112);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "|";
+            this.pictureBox2.Image = global::SmartDentalClinic.Properties.Resources.userRole;
+            this.pictureBox2.Location = new System.Drawing.Point(765, 90);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
+            // lblUserRole
+            // 
+            this.lblUserRole.AutoSize = true;
+            this.lblUserRole.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblUserRole.Location = new System.Drawing.Point(796, 90);
+            this.lblUserRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUserRole.Name = "lblUserRole";
+            this.lblUserRole.Size = new System.Drawing.Size(53, 23);
+            this.lblUserRole.TabIndex = 9;
+            this.lblUserRole.Text = "Role";
             // 
             // lblUsername2
             // 
@@ -157,61 +164,6 @@
             this.lblUsername2.TabIndex = 8;
             this.lblUsername2.Text = "User";
             // 
-            // lblUserRole
-            // 
-            this.lblUserRole.AutoSize = true;
-            this.lblUserRole.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblUserRole.Location = new System.Drawing.Point(796, 90);
-            this.lblUserRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUserRole.Name = "lblUserRole";
-            this.lblUserRole.Size = new System.Drawing.Size(53, 23);
-            this.lblUserRole.TabIndex = 9;
-            this.lblUserRole.Text = "Role";
-            // 
-            // gbDate
-            // 
-            this.gbDate.Controls.Add(this.label8);
-            this.gbDate.Controls.Add(this.pictureBox3);
-            this.gbDate.Controls.Add(this.lblDate);
-            this.gbDate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.gbDate.Location = new System.Drawing.Point(1227, 22);
-            this.gbDate.Name = "gbDate";
-            this.gbDate.Size = new System.Drawing.Size(355, 106);
-            this.gbDate.TabIndex = 11;
-            this.gbDate.TabStop = false;
-            // 
-            // lblDate
-            // 
-            this.lblDate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.ForeColor = System.Drawing.Color.DarkCyan;
-            this.lblDate.Location = new System.Drawing.Point(64, 22);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(284, 23);
-            this.lblDate.TabIndex = 12;
-            this.lblDate.Text = "Monday, 11/4/2026";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::SmartDentalClinic.Properties.Resources.calendar1;
-            this.pictureBox3.Location = new System.Drawing.Point(6, 12);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 80);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::SmartDentalClinic.Properties.Resources.userRole;
-            this.pictureBox2.Location = new System.Drawing.Point(765, 90);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
-            // 
             // pbUserImage
             // 
             this.pbUserImage.Image = global::SmartDentalClinic.Properties.Resources.manSmallUserCard;
@@ -222,28 +174,76 @@
             this.pbUserImage.TabIndex = 7;
             this.pbUserImage.TabStop = false;
             // 
-            // label8
+            // label4
             // 
-            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(64, 49);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(260, 23);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Today";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label4.Location = new System.Drawing.Point(590, 22);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 112);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "|";
             // 
-            // label2
+            // label3
             // 
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(1179, 22);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 112);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "|";
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label3.Location = new System.Drawing.Point(6, 22);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 112);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "|";
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.BackColor = System.Drawing.Color.Transparent;
+            this.lblUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblUserName.Location = new System.Drawing.Point(339, 22);
+            this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(96, 39);
+            this.lblUserName.TabIndex = 4;
+            this.lblUserName.Text = "User";
+            // 
+            // lblMotivation
+            // 
+            this.lblMotivation.AutoSize = true;
+            this.lblMotivation.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMotivation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblMotivation.Location = new System.Drawing.Point(47, 104);
+            this.lblMotivation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMotivation.Name = "lblMotivation";
+            this.lblMotivation.Size = new System.Drawing.Size(301, 23);
+            this.lblMotivation.TabIndex = 3;
+            this.lblMotivation.Text = "Have a great Day at the clinic!";
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblDescription.Location = new System.Drawing.Point(47, 71);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(446, 23);
+            this.lblDescription.TabIndex = 2;
+            this.lblDescription.Text = "Here\'s what\'s happening at your clinic today.";
+            // 
+            // lblGreeting
+            // 
+            this.lblGreeting.AutoSize = true;
+            this.lblGreeting.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGreeting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblGreeting.Location = new System.Drawing.Point(47, 22);
+            this.lblGreeting.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGreeting.Name = "lblGreeting";
+            this.lblGreeting.Size = new System.Drawing.Size(302, 39);
+            this.lblGreeting.TabIndex = 1;
+            this.lblGreeting.Text = "Good Afternoon, ";
             // 
             // ctrlDashboardHeader
             // 
